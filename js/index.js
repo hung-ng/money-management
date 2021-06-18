@@ -29,5 +29,21 @@ click= async ()=>{
       
       // Add a new document in collection "cities" with ID 'LA'
       const res = await db.collection('users').doc('LA').set(data);
+    
+     firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      console.log("user", user);
+      model.currentUser = {
+        email: user.email,
+        displayName: user.displayName
+      }
+      view.setActiveScreen('homeScreen');
+
+    } else {
+
+      view.setActiveScreen("loginScreen")
+    }
+  });
+};
       
 }
