@@ -1,0 +1,42 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.input-wrapper input {
+    outline: none;
+    border: 1px solid #dbdbdb;
+    padding: 10px 15px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.input-wrapper {
+    margin-bottom: 10px;
+}
+
+.btn {
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: blue;
+    color: white;
+    outline: none;
+    border-radius: 5px;
+}
+
+.error {
+    color: red;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.form-action span {
+    font-size: 25px;
+}
+
+.cursor{
+    cursor: pointer;
+}
