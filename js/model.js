@@ -42,12 +42,12 @@ model.login = async (dataLogin) => {
             || err.code == "auth/invalid-email"   
         ) 
         {
-            document.getElementById('email-error').innerText = err.message;
+            document.getElementById('email-error').innerText = "User not found";
         }
 
         else if (err.code == 'auth/wrong-password') {
             console.log("err:", err);
-            document.getElementById('password-error').innerText = err.message;
+            document.getElementById('password-error').innerText = "Password is incorrect";
         }
     }
 }
