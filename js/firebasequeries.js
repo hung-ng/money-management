@@ -14,11 +14,12 @@ const A = async () => { // tạo doc chứa quỹ tiết kiệm mới trong Savi
     })
 }
 
-const AA = async () => { // xóa doc chứa quỹ tiết kiệm đã tạo trong Savings
+const AA = async (id) => { // xóa doc chứa quỹ tiết kiệm đã tạo trong Savings
     console.log("clicked");
-    const res = await firebase.firestore().collection("Users").doc(currentUser.email).collection("Savings").doc("").update({
+    const res = await firebase.firestore().collection("Users").doc(currentUser.email).collection("Savings").doc(id).update({
         "Status": 1
-    })
+    });
+    location.reload()
 }
 
 const B1 = async () => { // tạo doc chứa nguồn thu tăng theo % mới trong PassiveIncome
@@ -44,11 +45,12 @@ const B2 = async () => { // tạo doc chứa nguồn thu tăng đều mới tron
     })
 }
 
-const BB = async () => { // xóa doc chứa nguồn thu đã tạo trong PassiveIncome
+const BB = async (id) => { // xóa doc chứa nguồn thu đã tạo trong PassiveIncome
     console.log("clicked");
-    const res = await firebase.firestore().collection("Users").doc(currentUser.email).collection("PassiveIncome").doc("").update({
+    const res = await firebase.firestore().collection("Users").doc(currentUser.email).collection("PassiveIncome").doc(id).update({
         "Status": 1
-    })
+    });
+    location.reload()
 }
 
 const C1 = async () => { // tạo doc chứa chi tiêu mới trong ActiveExchanges
@@ -73,17 +75,18 @@ const C2 = async () => { // tạo doc chứa thu nhập mới trong ActiveExchan
     })
 }
 
-const CC = async () => { // xóa doc chứa thu/chi đã tạo trong ActiveExchanges
+const CC = async (id) => { // xóa doc chứa thu/chi đã tạo trong ActiveExchanges
     console.log("clicked");
-    const res = await firebase.firestore().collection("Users").doc(currentUser.email).collection("ActiveExchanges").doc("").update({
+    const res = await firebase.firestore().collection("Users").doc(currentUser.email).collection("ActiveExchanges").doc(id).update({
         "Status": 1
-    })
+    });
+    location.reload()
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------
 
 const FetchDataA = async () => { //display bảng Savings
-    const res = await firebase.firestore().collection("Users").doc("Hung").collection("Savings").where("Status", "==", 0)
+    const res = await firebase.firestore().collection("Users").doc(currentUser.email).collection("Savings").where("Status", "==", 0)
         .get()
         .then(querySnapshot => {
             querySnapshot.forEach(doc => {
@@ -92,6 +95,7 @@ const FetchDataA = async () => { //display bảng Savings
                             <td>${data.Name}</td>
                             <td>${data.Amount}</td>
                             <td>${data.Date}</td>
+                            <td onclick="AA(${doc.id})">
                            </tr>`;
                 let table = document.getElementById('myTable')
                 table.innerHTML += row
@@ -103,7 +107,7 @@ const FetchDataA = async () => { //display bảng Savings
 }
 
 const FetchDataB1 = async () => { //display bảng nguồn thu tăng theo % PassiveIncome
-    const res = await firebase.firestore().collection("Users").doc("Hung").collection("PassiveIncome").where("Type", "==", 1).where("Status", "==", 0)
+    const res = await firebase.firestore().collection("Users").doc(currentUser.email).collection("PassiveIncome").where("Type", "==", 1).where("Status", "==", 0)
         .get()
         .then(querySnapshot => {
             querySnapshot.forEach(doc => {
@@ -114,6 +118,7 @@ const FetchDataB1 = async () => { //display bảng nguồn thu tăng theo % Pass
                             <td>${data.InterestRate}</td>
                             <td>${data.StartDate}</td>
                             <td>${Passive1(data.Amount, data.InterestRate, data.StartDate)}</td>
+                            <td onclick="BB(${doc.id})">
                            </tr>`;
                 let table = document.getElementById('myTable')
                 table.innerHTML += row
@@ -125,7 +130,7 @@ const FetchDataB1 = async () => { //display bảng nguồn thu tăng theo % Pass
 }
 
 const FetchDataB2 = async () => { //display bảng nguồn thu tăng đều PassiveIncome
-    const res = await firebase.firestore().collection("Users").doc("Hung").collection("PassiveIncome").where("Type", "==", 2).where("Status", "==", 0)
+    const res = await firebase.firestore().collection("Users").doc(currentUser.email).collection("PassiveIncome").where("Type", "==", 2).where("Status", "==", 0)
         .get()
         .then(querySnapshot => {
             querySnapshot.forEach(doc => {
@@ -135,6 +140,7 @@ const FetchDataB2 = async () => { //display bảng nguồn thu tăng đều Pass
                             <td>${data.Amount}</td>
                             <td>${data.StartDate}</td>
                             <td>${Passive2(data.Amount, data.StartDate)}</td>
+                            <td onclick="CC(${doc.id})">
                            </tr>`;
                 let table = document.getElementById('myTable')
                 table.innerHTML += row
@@ -146,7 +152,7 @@ const FetchDataB2 = async () => { //display bảng nguồn thu tăng đều Pass
 }
 
 const FetchDataC1 = async () => { //display bảng chi tiêu ActiveExchanges
-    const res = await firebase.firestore().collection("Users").doc("Hung").collection("ActiveExchanges").where("Type", "==", 3).where("Status", "==", 0)
+    const res = await firebase.firestore().collection("Users").doc(currentUser.email).collection("ActiveExchanges").where("Type", "==", 3).where("Status", "==", 0)
         .get()
         .then(querySnapshot => {
             querySnapshot.forEach(doc => {
@@ -166,7 +172,7 @@ const FetchDataC1 = async () => { //display bảng chi tiêu ActiveExchanges
 }
 
 const FetchDataC2 = async () => { //display bảng thu nhập ActiveExchanges
-    const res = await firebase.firestore().collection("Users").doc("Hung").collection("PassiveIncome").where("Type", "==", 4).where("Status", "==", 0)
+    const res = await firebase.firestore().collection("Users").doc(currentUser.email).collection("PassiveIncome").where("Type", "==", 4).where("Status", "==", 0)
         .get()
         .then(querySnapshot => {
             querySnapshot.forEach(doc => {
