@@ -71,7 +71,7 @@ component.loginScreen = `
         <div class="form-action">
             <span class="cursor-pointer" id="redirect-to-register">Don't have an account? register</span>
         </div>
-        <button class="btn" type="submit">
+        <button class="btn" type="submit" id="login-form">
             Login
         </button>
     </form>

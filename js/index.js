@@ -14,7 +14,7 @@ const init = () => {
   firebase.analytics();
   console.log(firebase.app().name);
 
-  firebase.auth().onAuthStateChanged(function (user) {
+  firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       console.log("user", user);
       model.currentUser = {
@@ -31,36 +31,6 @@ const init = () => {
 }
 
 window.onload = init;
-
-
-
-// var db = firebase.firestore();
-
-
-// const res = db.collection("Users").add({
-//   abc: 1,
-//   cde: "1"
-// });
-
-
-//   console.log("run into onload");
-//   const testNhe = document.getElementById("testNhe");
-
-//   const click = async () => {
-//     console.log("clickes đad"); // rõ ràng là đang không nhận code
-//     const data = {
-//       name: 'Los Angeles',
-//       state: 'CA',
-//       country: 'USA'
-//     };
-
-//     // Add a new document in collection "cities" with ID 'LA'
-//     const res = await db.collection('users').doc('LA').set(data);
-
-
-//   };
-
-//   testNhe.addEventListener('click', click);
 
 
 
