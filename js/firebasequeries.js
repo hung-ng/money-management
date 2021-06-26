@@ -1,22 +1,46 @@
-const First = async () => { //tạo và update filed số dư của mỗi user
+const Balance = async () => { //tạo và update field số dư của mỗi user
     console.log("clicked");
     const res = await firebase.firestore().collection("Users").doc(currentUser.email).set({ "Balance": "" })
 }
 
-const A = async () => { // tạo doc chứa quỹ tiết kiệm mới trong Savings
+const sumPassiveIncome = async () => {
+    let sumPassive = 0;
+    const res = await firebase.firestore().collection("Users").doc("Hung")
+        .collection("PassiveIncome").where("Type", "==", 1).where("Status", "==", 0)
+        .get()
+        .then(querySnapshot => {
+            querySnapshot.forEach(doc => {
+                let data = doc.data();
+                oneRow = Passive1(data.Amount, data.InterestRate, data.StartDate)
+                sumPassive = sumPassive + oneRow
+            });
+            console.log('run return sumPassive', sumPassive);
+            return sumPassive;  //den day done
+        })
+        .catch(err => {
+            console.log(`Error: ${err}`); //khong he co loi
+        });
+
+        
+
+}
+
+
+//------------------------------------------------------------------------
+const A = async (data) => { // tạo doc chứa quỹ tiết kiệm mới trong Savings
     console.log("clicked");
-    var date = new Date()
-    const res = await firebase.firestore().collection("Users").doc(currentUser.email).collection("Savings").add({
-        "Name": "",
-        "Amount": "",
-        "Date": date,
+    const res = await firebase.firestore().collection("Users").doc("Hung").collection("Savings").add({
+        "Name": data.name,
+        "Amount": data.amount,
+        "Date": data.date,
         "Status": 0
     })
+    location.reload()
 }
 
 const AA = async (id) => { // xóa doc chứa quỹ tiết kiệm đã tạo trong Savings
     console.log("clicked");
-    const res = await firebase.firestore().collection("Users").doc(currentUser.email).collection("Savings").doc(id).update({
+    const res = await firebase.firestore().collection("Users").doc("Hung").collection("Savings").doc(id).update({
         "Status": 1
     });
     location.reload()
@@ -24,7 +48,7 @@ const AA = async (id) => { // xóa doc chứa quỹ tiết kiệm đã tạo tro
 
 const B1 = async () => { // tạo doc chứa nguồn thu tăng theo % mới trong PassiveIncome
     console.log("clicked");
-    const res = await firebase.firestore().collection("Users").doc(currentUser.email).collection("PassiveIncome").add({
+    const res = await firebase.firestore().collection("Users").doc("Hung").collection("PassiveIncome").add({
         "Name": "",
         "Amount": "",
         "InterestRate": "",
@@ -86,7 +110,7 @@ const CC = async (id) => { // xóa doc chứa thu/chi đã tạo trong ActiveExc
 //-------------------------------------------------------------------------------------------------------------------------------------
 
 const FetchDataA = async () => { //display bảng Savings
-    const res = await firebase.firestore().collection("Users").doc(currentUser.email).collection("Savings").where("Status", "==", 0)
+    const res = await firebase.firestore().collection("Users").doc("Hung").collection("Savings").where("Status", "==", 0)
         .get()
         .then(querySnapshot => {
             querySnapshot.forEach(doc => {
@@ -95,7 +119,7 @@ const FetchDataA = async () => { //display bảng Savings
                             <td>${data.Name}</td>
                             <td>${data.Amount}</td>
                             <td>${data.Date}</td>
-                            <td onclick="AA(${doc.id})">
+                            <td onclick="AA('${doc.id}')"><img src="../img/deleteIcon.png" height="50px" width="50px"></td>
                            </tr>`;
                 let table = document.getElementById('myTable')
                 table.innerHTML += row
@@ -118,7 +142,7 @@ const FetchDataB1 = async () => { //display bảng nguồn thu tăng theo % Pass
                             <td>${data.InterestRate}</td>
                             <td>${data.StartDate}</td>
                             <td>${Passive1(data.Amount, data.InterestRate, data.StartDate)}</td>
-                            <td onclick="BB(${doc.id})">
+                            <td onclick="BB('${doc.id}')"><img src="../img/deleteIcon.png"></td>
                            </tr>`;
                 let table = document.getElementById('myTable')
                 table.innerHTML += row
@@ -135,12 +159,15 @@ const FetchDataB2 = async () => { //display bảng nguồn thu tăng đều Pass
         .then(querySnapshot => {
             querySnapshot.forEach(doc => {
                 let data = doc.data();
+                doc.update({
+                    "Total": Passive2(data.Amount, data.StartDate)
+                });
                 let row = `<tr>
                             <td>${doc.Name}</td>
                             <td>${data.Amount}</td>
                             <td>${data.StartDate}</td>
                             <td>${Passive2(data.Amount, data.StartDate)}</td>
-                            <td onclick="CC(${doc.id})">
+                            <td onclick="BB('${doc.id}')"><img src="../img/deleteIcon.png"></td>
                            </tr>`;
                 let table = document.getElementById('myTable')
                 table.innerHTML += row
@@ -161,6 +188,7 @@ const FetchDataC1 = async () => { //display bảng chi tiêu ActiveExchanges
                             <td>${doc.Name}</td>
                             <td>${data.Amount}</td>
                             <td>${data.Date}</td>
+                            <td onclick="CC('${doc.id}')"><img src="../img/deleteIcon.png" height="50px" width="50px"></td>
                            </tr>`;
                 let table = document.getElementById('myTable')
                 table.innerHTML += row
@@ -181,6 +209,7 @@ const FetchDataC2 = async () => { //display bảng thu nhập ActiveExchanges
                             <td>${doc.Name}</td>
                             <td>${data.Amount}</td>
                             <td>${data.Date}</td>
+                            <td onclick="CC('${doc.id}')"><img src="../img/deleteIcon.png"></td>
                            </tr>`;
                 let table = document.getElementById('myTable')
                 table.innerHTML += row
@@ -191,6 +220,32 @@ const FetchDataC2 = async () => { //display bảng thu nhập ActiveExchanges
         });
 }
 
+function monthDiff(d1) { // tính số tháng chênh lệch để tính tiền của các mức thu nhập bị động
+    var monthdiff;
+    d1 = new Date(d1)
+    var d2 = new Date()
+    monthdiff = (d2.getFullYear() - d1.getFullYear()) * 12;
+    monthdiff -= d1.getMonth();
+    monthdiff += d2.getMonth();
+    if (d1.getDate() > d2.getDate()) {
+        monthdiff -= 1
+    }
+    if (monthdiff <= 0) {
+        return 0
+    } else {
+        return monthdiff
+    }
+}
+
+function Passive1(amount, rate, startdate) { //tính số tiền tổng của từng mức thu nhập bị động tăng theo %
+    var monthdiff = monthDiff(startdate)
+    return Math.round(amount * (((rate + 100) / 100) ** monthdiff)) // tra ve la 1 number
+}
+
+function Passive2(amount, startdate) { //tính số tiền tổng của từng mức thu nhập bị động tăng cố định
+    var monthdiff = monthDiff(startdate)
+    return amount * (monthdiff + 1)
+}
 
 // const testNhe = document.getElementById("testNhe");
-// testNhe.addEventListener('click', ABC);
+// testNhe.addEventListener('click', FetchDataA);

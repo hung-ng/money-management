@@ -14,20 +14,40 @@ const init = () => {
   firebase.analytics();
   console.log(firebase.app().name);
 
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      console.log("user", user);
-      model.currentUser = {
-        email: user.email,
-        displayName: user.displayName
-      }
-      view.setActiveScreen("homeScreen");
+  // firebase.auth().onAuthStateChanged(function(user) {
+  //   if (user && user.emailVerified === true) {
+  //     console.log("user", user);
+  //     model.currentUser = {
+  //       email: user.email,
+  //       displayName: user.displayName
+  //     }
+  //     view.setActiveScreen("homeScreen");
 
-    } else {
+  //   } else {
 
-      view.setActiveScreen("loginScreen")
+  //     view.setActiveScreen("loginScreen")
+  //   }
+  // });
+
+  document.getElementById('date').valueAsDate = new Date();
+  FetchDataA()
+  sumPassiveIncome(); // kq phải la y hẹt 115 chu nhi
+  console.log(sumPassiveIncome(), "this is function sumPassive");
+
+
+  const testForm = document.getElementById('test-form');
+  testForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = {
+      name: testForm.name.value.trim(),
+      amount: testForm.amount.value.trim(),
+      date: testForm.date.value.trim(),
     }
-  });
+    console.log(data);
+    A(data);  // để kiểm tra lỗi ở đây
+  })
+
+  // console.log(sumPassiveIncome())
 }
 
 window.onload = init;
