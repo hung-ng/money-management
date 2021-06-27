@@ -40,3 +40,40 @@
 .cursor{
     cursor: pointer;
 }
+#redierctInfo
+{
+    border: none; 
+    position: absolute; 
+    top: 15px;
+    right: 15px;
+    font-size: 20px;
+    width: fit-content;
+    height: 50px;
+    line-height : 30px;
+    border-radius: 5px;
+}
+.container
+{
+    font-size: 40px;
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    height: 200px;
+    margin-left: 200px;
+    
+}
+.item1
+{
+    text-align: center;
+    width: 50%;
+
+}
+.item2
+{
+    text-align: left;
+    width: 50%;
+    height: 600px;
+
+}
+
+
