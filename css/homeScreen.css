@@ -1,1 +1,91 @@
+#sign-out 
+{
+    border: none; 
+    position: absolute; 
+    top: 15px;
+    right: 15px;
+    font-size: 20px;
+    width: fit-content;
+    height: 30px;
+    line-height : 30px;
+    border-radius: 5px;
+}
+@import url('https://fonts.googleapis.com/css2?family=Economica&display=swap');
+body {
+  font-family: 'Economica', sans-serif;   
+  /* background-image:url(''); */
+
+}
+
+#mySidenav{
+  width: 0px;
+}
+
+.sidenav {
+  height: 100%;
+  width: 10%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav div {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav div:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  font-size: 18px;
+  margin-left: 50px;
+  color: red;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav div {
+    font-size: 18px;
+  }
+}
+.tm {
+  color: #818181;
+  text-align: center;
+  padding: 8px 8px 8px 32px;
+}
+.expand {
+background-color: black;
+  width: 36px;
+  height: 48px;
+  color: white;
+  font-size: 48px;
+  text-align: center;
+  position: relative;
+  right: 20px;
+  top: -20px;
+}
+.expand:hover {
+  transition: 0.3s;
+  width: 80px;
+   
+}
+
+ 
+
 
