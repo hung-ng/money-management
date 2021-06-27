@@ -68,7 +68,7 @@ view.setActiveScreen = (screenName) => {
             document.getElementById('thunhap').addEventListener('click', () => {
                 view.setActiveScreen('thunhap');
             })
-            document.getElementById('redirectInfo').addEventListener('click', () => {
+            document.getElementById('redierctInfo').addEventListener('click', () => {
                 view.setActiveScreen('b1');
            
             })
@@ -84,7 +84,7 @@ view.setActiveScreen = (screenName) => {
             document.getElementById('giaodich').addEventListener('click', () => {
                 view.setActiveScreen('giaodich');
             })
-            document.getElementById('redirectInfo').addEventListener('click', () => {
+            document.getElementById('redierctInfo').addEventListener('click', () => {
                 view.setActiveScreen('b1');})
             break;
         case "giaodich":
@@ -156,3 +156,4 @@ view.setActiveScreen = (screenName) => {
             break;
     }
 }
+
