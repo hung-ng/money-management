@@ -52,7 +52,6 @@ controller.register = (data) => {
 }
 
 
-
 controller.login = (dataLogin) => {
     if (dataLogin.email.trim() === "") {
         document.getElementById('email-error').innerText = "Email is missing"
@@ -75,3 +74,63 @@ controller.login = (dataLogin) => {
 
 }
 
+
+controller.savingsForm = (dataSavings) => {
+    if (dataSavings.name.trim() === "") {
+
+    }
+    else {
+
+    }
+    if (dataSavings.amount === ""){
+
+    }
+    else{
+
+    }
+    if (dataSavings.name.trim() !== "" && dataSavings.amount !== "") {
+        dataSavings = {
+            name: dataSavings.name,
+            amount: Number(dataSavings.amount)
+        }
+        model.savingsForm(dataSavings)
+    }
+}
+
+controller.passiveIncomeForm1 = (dataPI1) => {
+    console.log("blo");
+    if (dataPI1.name.trim() === "") {
+
+    }
+    else {
+
+    }
+    if (dataPI1.amount === ""){
+
+    }
+    else{
+
+    }
+    if (dataPI1.rate === ""){
+
+    }
+    else{
+
+    }
+    if (dataPI1.date > new Date()) {
+
+    }
+    else {
+
+    }
+    if (dataPI1.name.trim() !== "" && Date.parse(dataPI1.date) <= Date.parse(new Date()) && dataPI1.rate !== "" && dataPI1.amount !== "") {
+        console.log("Clo");
+        dataPI1 = {
+            name: dataPI1.name,
+            amount: Number(dataPI1.amount),
+            rate: Number(dataPI1.rate),
+            date: dataPI1.date
+        }
+        model.passiveIncomeForm1(dataPI1)
+    }
+}

@@ -14,7 +14,7 @@ view.setActiveScreen = (screenName) => {
                     confirmPassword: registerForm.confirmPassword.value
                 }
                 console.log(data);
-                controller.register(data);  // để kiểm tra lỗi ở đây
+                controller.register(data);
             });
 
             document.getElementById('redirect-to-login').addEventListener('click', () => {
@@ -40,63 +40,156 @@ view.setActiveScreen = (screenName) => {
             })
 
             break;
+        //-------------------------------------------------------------------------------
 
         case "homeScreen":
             document.getElementById('main').innerHTML = component.homeScreen;
+            Balance();
+            BalanceDisplay();
             const signOutButton = document.getElementById("sign-out");
             signOutButton.addEventListener('click', () => {
                 firebase.auth().signOut();
                 view.setActiveScreen("loginScreen");
             }
             );
-            document.getElementById('quy').addEventListener('click', () => {
-                view.setActiveScreen('quy');
+            document.getElementById("home").addEventListener('click', () => {
+                view.setActiveScreen("homeScreen")
             })
-            document.getElementById('thunhap').addEventListener('click', () => {
-                view.setActiveScreen('thunhap');
+            document.getElementById('savings').addEventListener('click', () => {
+                view.setActiveScreen('savings');
             })
-            document.getElementById('giaodich').addEventListener('click', () => {
-                view.setActiveScreen('giaodich');
+            document.getElementById('passiveincome').addEventListener('click', () => {
+                view.setActiveScreen('passiveIncome');
             })
+            document.getElementById('activeexchanges').addEventListener('click', () => {
+                view.setActiveScreen('activeExchanges');
+            })
+
             break;
 
-        case "quy":
-            document.getElementById('main').innerHTML = component.quy;
-            document.getElementById('quy').addEventListener('click', () => {
-                view.setActiveScreen('quy');
+        //-------------------------------------------------------------------------
+
+        case "savings":
+            document.getElementById('main').innerHTML = component.savings;
+            document.getElementById("home").addEventListener('click', () => {
+                view.setActiveScreen("homeScreen")
             })
-            document.getElementById('thunhap').addEventListener('click', () => {
-                view.setActiveScreen('thunhap');
+            document.getElementById('savings').addEventListener('click', () => {
+                view.setActiveScreen('savings');
             })
-            document.getElementById('redirectInfo').addEventListener('click', () => {
-                view.setActiveScreen('b1');
-           
+            document.getElementById('passiveincome').addEventListener('click', () => {
+                view.setActiveScreen('passiveIncome');
             })
+            document.getElementById('activeexchanges').addEventListener('click', () => {
+                view.setActiveScreen('activeExchanges');
+            })
+            document.getElementById('redirectToForm').addEventListener('click', () => {
+                view.setActiveScreen('savingsForm');
+            })
+            FetchDataA()
+            sumTotalSavings()
             break;
-        case "thunhap":
-            document.getElementById('main').innerHTML = component.thunhap;
-            document.getElementById('quy').addEventListener('click', () => {
-                view.setActiveScreen('quy');
+
+        case "savingsForm":
+            document.getElementById('main').innerHTML = component.savingsForm;
+            document.getElementById("home").addEventListener('click', () => {
+                view.setActiveScreen("homeScreen")
             })
-            document.getElementById('thunhap').addEventListener('click', () => {
-                view.setActiveScreen('thunhap');
+            document.getElementById('savings').addEventListener('click', () => {
+                view.setActiveScreen('savings');
             })
-            document.getElementById('giaodich').addEventListener('click', () => {
-                view.setActiveScreen('giaodich');
+            document.getElementById('passiveincome').addEventListener('click', () => {
+                view.setActiveScreen('passiveIncome');
             })
-            document.getElementById('redirectInfo').addEventListener('click', () => {
-                view.setActiveScreen('b1');})
+            document.getElementById('activeexchanges').addEventListener('click', () => {
+                view.setActiveScreen('activeExchanges');
+            })
+            document.getElementById('redirect-to-savings').addEventListener('click', () => {
+                view.setActiveScreen('savings');
+            });
+            const savingsForm = document.getElementById('savings-form');
+            savingsForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const dataSavings = {
+                    name: savingsForm.name.value,
+                    amount: savingsForm.amount.value,
+                }
+                controller.savingsForm(dataSavings);
+            })
+
             break;
-        case "giaodich":
-            document.getElementById('main').innerHTML = component.giaodich;
-            document.getElementById('quy').addEventListener('click', () => {
-                view.setActiveScreen('quy');
+
+        //------------------------------------------------------------------------
+
+        case "passiveIncome":
+            document.getElementById('main').innerHTML = component.passiveIncome;
+            document.getElementById("home").addEventListener('click', () => {
+                view.setActiveScreen("homeScreen")
             })
-            document.getElementById('thunhap').addEventListener('click', () => {
-                view.setActiveScreen('thunhap');
+            document.getElementById('savings').addEventListener('click', () => {
+                view.setActiveScreen('savings');
             })
-            document.getElementById('giaodich').addEventListener('click', () => {
-                view.setActiveScreen('giaodich');
+            document.getElementById('passiveincome').addEventListener('click', () => {
+                view.setActiveScreen('passiveIncome');
+            })
+            document.getElementById('activeexchanges').addEventListener('click', () => {
+                view.setActiveScreen('activeExchanges');
+            })
+            document.getElementById('redirectToPIForm1').addEventListener('click', () => {
+                view.setActiveScreen('passiveIncomeForm1');
+            })
+            FetchDataB1();
+            sumPI1();
+            PITotal();
+            break;
+
+        case "passiveIncomeForm1":
+            document.getElementById('main').innerHTML = component.passiveIncomeForm1;
+            document.getElementById("home").addEventListener('click', () => {
+                view.setActiveScreen("homeScreen")
+            })
+            document.getElementById('savings').addEventListener('click', () => {
+                view.setActiveScreen('savings');
+            })
+            document.getElementById('passiveincome').addEventListener('click', () => {
+                view.setActiveScreen('passiveIncome');
+            })
+            document.getElementById('activeexchanges').addEventListener('click', () => {
+                view.setActiveScreen('activeExchanges');
+            })
+            document.getElementById('redirect-to-PI1').addEventListener('click', () => {
+                view.setActiveScreen('passiveIncome');
+            });
+            document.getElementById('date').valueAsDate = new Date();
+            const PIForm1 = document.getElementById('PIForm1');
+            PIForm1.addEventListener('submit', (event) => {
+                event.preventDefault();
+                console.log("helo");
+                const dataPI1 = {
+                    name: PIForm1.name.value,
+                    amount: PIForm1.amount.value,
+                    rate: PIForm1.rate.value,
+                    date: PIForm1.date.value
+                }
+                console.log("alo");
+                controller.passiveIncomeForm1(dataPI1);
+            })
+
+            break;
+
+        case "activeExchanges":
+            document.getElementById('main').innerHTML = component.activeExchanges;
+            document.getElementById("home").addEventListener('click', () => {
+                view.setActiveScreen("homeScreen")
+            })
+            document.getElementById('savings').addEventListener('click', () => {
+                view.setActiveScreen('savings');
+            })
+            document.getElementById('passiveincome').addEventListener('click', () => {
+                view.setActiveScreen('passiveIncome');
+            })
+            document.getElementById('activeexchanges').addEventListener('click', () => {
+                view.setActiveScreen('activeExchanges');
             })
             document.getElementById('c1').addEventListener('click', () => {
                 view.setActiveScreen('c1');
@@ -106,52 +199,35 @@ view.setActiveScreen = (screenName) => {
             })
 
             break;
-        case "b1":
-            document.getElementById('main').innerHTML = component.b1;
-            document.getElementById('quy').addEventListener('click', () => {
-                view.setActiveScreen('quy');
-            })
-            document.getElementById('thunhap').addEventListener('click', () => {
-                view.setActiveScreen('thunhap');
-            })
-            document.getElementById('giaodich').addEventListener('click', () => {
-                view.setActiveScreen('giaodich');
-            })
-            break;
-        case "b2":
-            document.getElementById('main').innerHTML = component.b2;
-            document.getElementById('quy').addEventListener('click', () => {
-                view.setActiveScreen('quy');
-            })
-            document.getElementById('thunhap').addEventListener('click', () => {
-                view.setActiveScreen('thunhap');
-            })
-            document.getElementById('giaodich').addEventListener('click', () => {
-                view.setActiveScreen('giaodich');
-            })
-            break;
+
         case "c1":
             document.getElementById('main').innerHTML = component.c1;
-            document.getElementById('quy').addEventListener('click', () => {
-                view.setActiveScreen('quy');
+            document.getElementById("home").addEventListener('click', () => {
+                view.setActiveScreen("homeScreen")
             })
-            document.getElementById('thunhap').addEventListener('click', () => {
-                view.setActiveScreen('thunhap');
+            document.getElementById('savings').addEventListener('click', () => {
+                view.setActiveScreen('savings');
             })
-            document.getElementById('giaodich').addEventListener('click', () => {
-                view.setActiveScreen('giaodich');
+            document.getElementById('passiveincome').addEventListener('click', () => {
+                view.setActiveScreen('passiveIncome');
+            })
+            document.getElementById('activeexchanges').addEventListener('click', () => {
+                view.setActiveScreen('activeExchanges');
             })
             break;
         case "c2":
             document.getElementById('main').innerHTML = component.c2;
-            document.getElementById('quy').addEventListener('click', () => {
-                view.setActiveScreen('quy');
+            document.getElementById("home").addEventListener('click', () => {
+                view.setActiveScreen("homeScreen")
             })
-            document.getElementById('thunhap').addEventListener('click', () => {
-                view.setActiveScreen('thunhap');
+            document.getElementById('savings').addEventListener('click', () => {
+                view.setActiveScreen('savings');
             })
-            document.getElementById('giaodich').addEventListener('click', () => {
-                view.setActiveScreen('giaodich');
+            document.getElementById('passiveincome').addEventListener('click', () => {
+                view.setActiveScreen('passiveIncome');
+            })
+            document.getElementById('activeexchanges').addEventListener('click', () => {
+                view.setActiveScreen('activeExchanges');
             })
             break;
     }

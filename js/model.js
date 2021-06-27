@@ -5,10 +5,10 @@ model.register = async (data) => {
         await firebase
             .auth()
             .createUserWithEmailAndPassword(data.email, data.password);
-        
 
 
-     
+
+
         firebase.auth().currentUser.updateProfile({
             displayName: data.lastName + " " + data.firstName
         });
@@ -17,9 +17,18 @@ model.register = async (data) => {
 
         firebase.auth().currentUser.sendEmailVerification();
 
- 
-        alert('Your email has been registered, please check your email');
 
+        alert('Your email has been registered, please check your email');
+        const res = await firebase.firestore().collection("Users").doc(data.email).set({
+            "Balance": 0,
+            "AETotal": 0,
+            "SavingsTotal": 0,
+            "PITotal": 0,
+        })
+        const res1 = await firebase.firestore().collection("Users").doc(data.email).collection("PassiveIncome").doc("Total").set({
+            "Total1": 0,
+            "Total2": 0
+        })
         view.setActiveScreen('loginScreen');
 
     }
@@ -29,19 +38,18 @@ model.register = async (data) => {
     }
 }
 
-model.login = async (dataLogin) => { 
+model.login = async (dataLogin) => {
     try {
-        const response = await firebase 
+        const response = await firebase
             .auth()
             .signInWithEmailAndPassword(dataLogin.email, dataLogin.password);
 
-    } 
-    catch (err) { 
+    }
+    catch (err) {
         console.log("err", err);
-        if (err.code == 'auth/user-not-found'  
-            || err.code == "auth/invalid-email"   
-        ) 
-        {
+        if (err.code == 'auth/user-not-found'
+            || err.code == "auth/invalid-email"
+        ) {
             document.getElementById('email-error').innerText = "User not found";
         }
 
@@ -50,4 +58,25 @@ model.login = async (dataLogin) => {
             document.getElementById('password-error').innerText = "Password is incorrect";
         }
     }
+}
+
+model.savingsForm = async (dataSavings) => {
+    const res = await firebase.firestore().collection("Users").doc(model.currentUser.email).collection("Savings").add({
+        "Name": dataSavings.name,
+        "Amount": dataSavings.amount,
+        "Status": 0
+    })
+    view.setActiveScreen("savings")
+}
+
+model.passiveIncomeForm1 = async (dataPI1) =>{
+    const res = await firebase.firestore().collection("Users").doc(model.currentUser.email).collection("PassiveIncome").add({
+        "Name": dataPI1.name,
+        "Amount": dataPI1.amount,
+        "InterestRate": dataPI1.rate,
+        "StartDate": dataPI1.date,
+        "Type": 1,
+        "Status": 0
+    })
+    view.setActiveScreen("passiveIncome")
 }

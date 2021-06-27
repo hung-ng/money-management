@@ -1,24 +1,5 @@
 const component = {};
 
-
-component.homeScreen = `
-
-<div id="sign-out" class="cursor" > 
-Sign-out
-</div>
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&minus;</a>
-  <div>blance here</div>
-  <div id="quy" >quy</div>
-  <div id="thunhap">thunhap</div>
-  <div id="giaodich">giaodich</div>
-  <p class="tm"> something coporation </p>
-</div>
-  <div class="expand" onclick="openNav()"> &plus; </div>
-
-
-`;
-
 component.registerScreen = `
 <div class="register-container">
 <div class="aside">
@@ -80,7 +61,7 @@ component.loginScreen = `
         
         <!-- xong het phan input -->
         <div class="form-action">
-            <span class="cursor-pointer" id="redirect-to-register">Don't have an account? register</span>
+            <span class="cursor-pointer" id="redirect-to-register">Don't have an account? Register</span>
         </div>
         <button class="btn" type="submit">
             Login
@@ -90,73 +71,137 @@ component.loginScreen = `
 </div>
 `
 
-component.quy=`  <button class="btn" id="redierctInfo"> redirect </button>
+component.homeScreen = `
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&minus;</a>
-  <div>blance here</div>
-  <div id="quy">trade</div>
-  <div id="thunhap">thunhap</div>
-  <div id="giaodich">giaodich</div>
-  <p class="tm" id="text"> something coporation </p>
+  <div id ="home">Home</div>
+  <div id="savings" >Savings</div>
+  <div id="passiveincome">Passive Income</div>
+  <div id="activeexchanges">Active Exchanges</div>
+  <div id="sign-out" class="cursor" >Sign out</div>
+</div>
+  <div class="expand" onclick="openNav()"> &plus; </div>
+  <table>
+  <thead>
+    <tr>
+      <th>Balance</th>
+    </tr>
+  </thead>
+  <tbody id="balanceTable">
+  </tbody>
+</table>
+`;
+
+component.savings = `  <button class="btn" id="redirectToForm"> redirect </button>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&minus;</a>
+  <div id ="home">Home</div>
+  <div id="savings" >Savings</div>
+  <div id="passiveincome">Passive Income</div>
+  <div id="activeexchanges">Active Exchanges</div>
+  <div id="sign-out" class="cursor" >Sign out</div>
 </div>
 <div class="expand" onclick="openNav()"> &plus; </div>
 <table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">1</th>
-      <th scope="col">2</th>
-      <th scope="col">3</th>
+      <th scope="col">Name</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>x</td>
-      <td>y</td>
-      <td>z</td>
-    </tr>
+  <tbody id="savingsTable">
   </tbody>
-</table>`
-component.thunhap=`  <button class="btn" id="redierctInfo"> redirect </button>
+</table>
+`
+
+component.savingsForm = `
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&minus;</a>
-  <div>blance here</div>
-  <div id="quy">trade</div>
-  <div id="thunhap">thunhap</div>
-  <div id="giaodich">giaodich</div>
-  <p class="tm" id="text"> something coporation </p>fff
+  <div id ="home">Home</div>
+  <div id="savings" >Savings</div>
+  <div id="passiveincome">Passive Income</div>
+  <div id="activeexchanges">Active Exchanges</div>
+  <div id="sign-out" class="cursor" >Sign out</div>
+</div>
+<div class="expand" onclick="openNav()"> &plus; </div>
+<div style="width: 100vh;margin-left:200px ; ">
+  <form id ="savings-form">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Name</label>
+      <input class="form-control form-control-lg" type="text" name="name" placeholder="Saving's name">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Amount</label>
+      <input class="form-control form-control-lg" id="exampleInputEmail1" type="number" step="0.01" min="0.01" name="amount" placeholder="Amount">
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button id="redirect-to-savings" class="btn btn-primary">Cancel</button>
+  </form>`
+
+component.passiveIncome = `  <button class="btn" id="redirectToPIForm1"> redirect </button>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&minus;</a>
+  <div id ="home">Home</div>
+  <div id="savings" >Savings</div>
+  <div id="passiveincome">Passive Income</div>
+  <div id="activeexchanges">Active Exchanges</div>
+  <div id="sign-out" class="cursor" >Sign out</div>
 </div>
 <div class="expand" onclick="openNav()"> &plus; </div>
 <table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">1</th>
-      <th scope="col">2</th>
-      <th scope="col">3</th>
+      <th scope="col">Name</th>
+      <th scope="col">Starting Amount</th>
+      <th scope="col">Rate</th>
+      <th scope="col">Start date</th>
+      <th scope="col">Total</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>x</td>
-      <td>y</td>
-      <td>z</td>
-    </tr>
+  <tbody id="passiveincomeTable1">
   </tbody>
 </table>`
-component.giaodich=`
+
+component.passiveIncomeForm1 = ` <button class="btn" id="redirectInfo"> redirect </button>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&minus;</a>
-  <div>blance here</div>
-  <div id="quy">trade</div>
-  <div id="thunhap">thunhap</div>
-  <div id="giaodich">giaodich</div>
-  <p class="tm" id="text"> something coporation </p>
+  <div id ="home">Home</div>
+  <div id="savings" >Savings</div>
+  <div id="passiveincome">Passive Income</div>
+  <div id="activeexchanges">Active Exchanges</div>
+  <div id="sign-out" class="cursor" >Sign out</div>
 </div>
 <div class="expand" onclick="openNav()"> &plus; </div>
-<script src="../js/function.js"></script>
+<div style="width: 100vh;margin-left:200px ; ">
+  <form id="PIForm1">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Name</label>
+      <input class="form-control form-control-lg" type="text" name="name" placeholder="Name">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Starting Amount</label>
+      <input class="form-control form-control-lg" type="number" step="0.01" min="0.01" name="amount" placeholder="Amount">
+      <div class="form-group">
+      <label for="exampleInputEmail1">Interest Rate</label>
+      <input class="form-control form-control-lg" type="number" step="0.01" min="0.01" name="rate" placeholder="Interest Rate">  
+      <div class="form-group">
+      <label for="date">Start Date</label>
+      <input class="form-control form-control-lg" name="date" type="date"  id="date"> 
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button id="redirect-to-PI1" class="btn btn-primary">Cancel</button>
+  </form>`
+
+  //--------------------------------------------------------------------------------
+
+component.activeExchanges = `
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&minus;</a>
+  <div id ="home">Home</div>
+  <div id="savings" >Savings</div>
+  <div id="passiveincome">Passive Income</div>
+  <div id="activeexchanges">Active Exchanges</div>
+  <div id="sign-out" class="cursor" >Sign out</div>
+</div>
+<div class="expand" onclick="openNav()"> &plus; </div>
 <div class="container">
   <div style="display: flex; border-bottom: black solid 5px;">
     <div class="item1" id="c1" style="border-right:solid black 5px ;">chi</div>
@@ -167,14 +212,15 @@ component.giaodich=`
     <div class="item2">log</div>
   </div>
 </div>`
-component.c1=`<button class="btn" id="redierctInfo"> redirect </button>
+
+component.c1 = `<button class="btn" id="redirectInfo"> redirect </button>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&minus;</a>
-  <div>blance here</div>
-  <div id="quy">trade</div>
-  <div id="thunhap">thunhap</div>
-  <div id="giaodich">giaodich</div>
-  <p class="tm" id="text"> something coporation </p>
+  <div id ="home">Home</div>
+  <div id="savings" >Savings</div>
+  <div id="passiveincome">Passive Income</div>
+  <div id="activeexchanges">Active Exchanges</div>
+  <div id="sign-out" class="cursor" >Sign out</div>
 </div>
 <div class="expand" onclick="openNav()"> &plus; </div>
 <div style="width: 100vh;margin-left:200px ; ">
@@ -193,14 +239,15 @@ component.c1=`<button class="btn" id="redierctInfo"> redirect </button>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>`
-component.c2=`<button class="btn" id="redierctInfo"> redirect </button>
+
+component.c2 = `<button class="btn" id="redirectInfo"> redirect </button>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&minus;</a>
-  <div>blance here</div>
-  <div id="quy">trade</div>
-  <div id="thunhap">thunhap</div>
-  <div id="giaodich">giaodich</div>
-  <p class="tm" id="text"> something coporation </p>
+  <div id ="home">Home</div>
+  <div id="savings" >Savings</div>
+  <div id="passiveincome">Passive Income</div>
+  <div id="activeexchanges">Active Exchanges</div>
+  <div id="sign-out" class="cursor" >Sign out</div>
 </div>
 <div class="expand" onclick="openNav()"> &plus; </div>
 <div style="width: 100vh;margin-left:200px ; ">
@@ -219,57 +266,4 @@ component.c2=`<button class="btn" id="redierctInfo"> redirect </button>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>`
-component.b1=` <button class="btn" id="redierctInfo"> redirect </button>
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&minus;</a>
-  <div>blance here</div>
-  <div id="quy">trade</div>
-  <div id="thunhap">thunhap</div>
-  <div id="giaodich">giaodich</div>
-  <p class="tm" id="text"> something coporation </p>
-</div>
-<div class="expand" onclick="openNav()"> &plus; </div>
-<div style="width: 100vh;margin-left:200px ; ">
-  <form>
-    <div class="form-group">
-      <label for="exampleInputEmail1">name</label>
-      <input class="form-control form-control-lg" type="text" placeholder="name">
-    <div class="form-group">
-      <label for="exampleInputEmail1">amount</label>
-      <input class="form-control form-control-lg" type="number" placeholder="amount">
-    <div class="form-group">
-      <label for="exampleInputPassword1">intrest rate</label>
-      <input class="form-control form-control-lg" type="number" placeholder="rate">
-    </div>
-    <div class="form-check">
-      <label class="form-check-label" for="exampleCheck1">date pls</label>
-      <input class="form-control form-control-lg" type="date"  id="exampleCheck1">
-      
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>`
-component.b2=` <button class="btn" id="redierctInfo"> redirect </button>
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&minus;</a>
-  <div>blance here</div>
-  <div id="quy">trade</div>
-  <div id="thunhap">thunhap</div>
-  <div id="giaodich">giaodich</div>
-  <p class="tm" id="text"> something coporation </p>
-</div>
-<div class="expand" onclick="openNav()"> &plus; </div>
-<div style="width: 100vh;margin-left:200px ; ">
-  <form>
-    <div class="form-group">
-      <label for="exampleInputEmail1">name</label>
-      <input class="form-control form-control-lg" type="text" placeholder="name">
-    <div class="form-group">
-      <label for="exampleInputEmail1">amount</label>
-      <input class="form-control form-control-lg" type="number" placeholder="amount">
-    <div class="form-check">
-      <label class="form-check-label" for="exampleCheck1">date pls</label>
-      <input class="form-control form-control-lg" type="date"  id="exampleCheck1">
-      
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>`
+
