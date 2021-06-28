@@ -29,6 +29,10 @@ model.register = async (data) => {
             "Total1": 0,
             "Total2": 0
         })
+        const res2 = await firebase.firestore().collection("Users").doc(data.email).collection("ActiveExchanges").doc("Total").set({
+            "Total1": 0,
+            "Total2": 0
+        })
         view.setActiveScreen('loginScreen');
 
     }
@@ -79,4 +83,26 @@ model.passiveIncomeForm1 = async (dataPI1) =>{
         "Status": 0
     })
     view.setActiveScreen("passiveIncome")
+}
+
+model.passiveIncomeForm2 = async (dataPI2) =>{
+    const res = await firebase.firestore().collection("Users").doc(model.currentUser.email).collection("PassiveIncome").add({
+        "Name": dataPI2.name,
+        "Amount": dataPI2.amount,
+        "StartDate": dataPI2.date,
+        "Type": 2,
+        "Status": 0
+    })
+    view.setActiveScreen("passiveIncome2")
+}
+
+model.AEForm = async (dataAE) => {
+    const res = await firebase.firestore().collection("Users").doc(model.currentUser.email).collection("ActiveExchanges").add({
+        "Name": dataAE.name,
+        "Amount": dataAE.amount,
+        "Date": dataAE.date,
+        "Type": dataAE.type,
+        "Status": 0
+    })
+    view.setActiveScreen("activeExchanges")
 }

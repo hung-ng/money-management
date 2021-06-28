@@ -98,7 +98,6 @@ controller.savingsForm = (dataSavings) => {
 }
 
 controller.passiveIncomeForm1 = (dataPI1) => {
-    console.log("blo");
     if (dataPI1.name.trim() === "") {
 
     }
@@ -117,14 +116,13 @@ controller.passiveIncomeForm1 = (dataPI1) => {
     else{
 
     }
-    if (dataPI1.date > new Date()) {
+    if (Date.parse(dataPI1.date) > Date.parse(new Date())) {
 
     }
     else {
 
     }
     if (dataPI1.name.trim() !== "" && Date.parse(dataPI1.date) <= Date.parse(new Date()) && dataPI1.rate !== "" && dataPI1.amount !== "") {
-        console.log("Clo");
         dataPI1 = {
             name: dataPI1.name,
             amount: Number(dataPI1.amount),
@@ -132,5 +130,64 @@ controller.passiveIncomeForm1 = (dataPI1) => {
             date: dataPI1.date
         }
         model.passiveIncomeForm1(dataPI1)
+    }
+}
+
+controller.passiveIncomeForm2 = (dataPI2) => {
+    if (dataPI2.name.trim() === "") {
+
+    }
+    else {
+
+    }
+    if (dataPI2.amount === ""){
+
+    }
+    else{
+
+    }
+    if (Date.parse(dataPI2.date) > Date.parse(new Date())) {
+
+    }
+    else {
+
+    }
+    if (dataPI2.name.trim() !== "" && Date.parse(dataPI2.date) <= Date.parse(new Date()) && dataPI2.amount !== "") {
+        dataPI2 = {
+            name: dataPI2.name,
+            amount: Number(dataPI2.amount),
+            date: dataPI2.date
+        }
+        model.passiveIncomeForm2(dataPI2)
+    }
+}
+
+controller.AEForm = (dataAE) => {
+    if (dataAE.name.trim() === "") {
+
+    }
+    else {
+
+    }
+    if (dataAE.amount === ""){
+
+    }
+    else{
+
+    }
+    if (Date.parse(dataAE.date) > Date.parse(new Date())) {
+
+    }
+    else {
+
+    }
+    if (dataAE.name.trim() !== "" && Date.parse(dataAE.date) <= Date.parse(new Date()) && dataAE.amount !== "") {
+        dataAE = {
+            name: dataAE.name,
+            amount: Number(dataAE.amount),
+            date: dataAE.date,
+            type: Number(dataAE.type)
+        }
+        model.AEForm(dataAE)
     }
 }
