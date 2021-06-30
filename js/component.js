@@ -160,7 +160,7 @@ component.savings = `
   </button>
   <div id="display-content">
     <div id="adddiv">
-      <div id="redirectToForm"><img src="../img/Plus-Icon.png" height="30px"
+      <div class="cursor-pointer" id="redirectToForm"><img src="../img/Plus-Icon.png" height="30px"
             width="30px" /></div>
     </div>
     <h2>Savings</h2>
@@ -282,7 +282,7 @@ component.passiveIncome1 = `
   </button>
   <div id="display-content">
     <div id="adddiv">
-      <div id="redirectToPIForm1"><img src="../img/Plus-Icon.png" height="30px"
+      <div class="cursor-pointer" id="redirectToPIForm1"><img src="../img/Plus-Icon.png" height="30px"
             width="30px" /></div>
     </div>
     <h2>Passive Income Increased by Percent</h2>
@@ -417,7 +417,7 @@ component.passiveIncome2 = `
   </button>
   <div id="display-content">
     <div id="adddiv">
-      <div id="redirectToPIForm2"><img src="../img/Plus-Icon.png" height="30px"
+      <div class="cursor-pointer" id="redirectToPIForm2"><img src="../img/Plus-Icon.png" height="30px"
             width="30px" /></div>
     </div>
     <h2>Passive Income Increased Uniformly</h2>
@@ -547,7 +547,7 @@ component.activeExchanges = `
   </button>
   <div id="display-content">
     <div id="adddiv">
-      <div id="redirectToAEForm"><img src="../img/Plus-Icon.png" height="30px"
+      <div class="cursor-pointer" id="redirectToAEForm"><img src="../img/Plus-Icon.png" height="30px"
             width="30px" /></div>
     </div>
     <h2>Active Exchanges</h2>
