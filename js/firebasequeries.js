@@ -168,7 +168,6 @@ const AETotal = async () => {
 
 //------------------------------------------------------------------------
 const A = async (data) => { // tạo doc chứa quỹ tiết kiệm mới trong Savings
-    console.log("clicked");
     const res = await firebase.firestore().collection("Users").doc(model.currentUser.email).collection("Savings").add({
         "Name": data.name,
         "Amount": data.amount,
@@ -177,7 +176,6 @@ const A = async (data) => { // tạo doc chứa quỹ tiết kiệm mới trong 
 }
 
 const AA = async (id) => { // xóa doc chứa quỹ tiết kiệm đã tạo trong Savings
-    console.log("clicked");
     const res = await firebase.firestore().collection("Users").doc(model.currentUser.email).collection("Savings").doc(id).update({
         "Status": 1
     });
@@ -185,7 +183,6 @@ const AA = async (id) => { // xóa doc chứa quỹ tiết kiệm đã tạo tro
 }
 
 const B1 = async () => { // tạo doc chứa nguồn thu tăng theo % mới trong PassiveIncome
-    console.log("clicked");
     const res = await firebase.firestore().collection("Users").doc(model.currentUser.email).collection("PassiveIncome").add({
         "Name": "",
         "Amount": "",
@@ -197,7 +194,6 @@ const B1 = async () => { // tạo doc chứa nguồn thu tăng theo % mới tron
 }
 
 const B2 = async () => { // tạo doc chứa nguồn thu tăng đều mới trong PassiveIncome
-    console.log("clicked");
     const res = await firebase.firestore().collection("Users").doc(model.currentUser.email).collection("PassiveIncome").add({
         "Name": "",
         "Amount": "",
@@ -207,16 +203,21 @@ const B2 = async () => { // tạo doc chứa nguồn thu tăng đều mới tron
     })
 }
 
-const BB = async (id) => { // xóa doc chứa nguồn thu đã tạo trong PassiveIncome
-    console.log("clicked");
+const BB1 = async (id) => { // xóa doc chứa nguồn thu đã tạo trong PassiveIncome
     const res = await firebase.firestore().collection("Users").doc(model.currentUser.email).collection("PassiveIncome").doc(id).update({
         "Status": 1
     });
-    view.setActiveScreen("passiveIncome")
+    view.setActiveScreen("passiveIncome1")
+}
+
+const BB2 = async (id) => { // xóa doc chứa nguồn thu đã tạo trong PassiveIncome
+    const res = await firebase.firestore().collection("Users").doc(model.currentUser.email).collection("PassiveIncome").doc(id).update({
+        "Status": 1
+    });
+    view.setActiveScreen("passiveIncome2")
 }
 
 const C1 = async () => { // tạo doc chứa chi tiêu mới trong ActiveExchanges
-    console.log("clicked");
     const res = await firebase.firestore().collection("Users").doc(model.currentUser.email).collection("ActiveExchanges").add({
         "Name": "",
         "Amount": "",
@@ -227,7 +228,6 @@ const C1 = async () => { // tạo doc chứa chi tiêu mới trong ActiveExchang
 }
 
 const C2 = async () => { // tạo doc chứa thu nhập mới trong ActiveExchanges
-    console.log("clicked");
     const res = await firebase.firestore().collection("Users").doc(model.currentUser.email).collection("ActiveExchanges").add({
         "Name": "",
         "Amount": "",
@@ -238,10 +238,10 @@ const C2 = async () => { // tạo doc chứa thu nhập mới trong ActiveExchan
 }
 
 const CC = async (id) => { // xóa doc chứa thu/chi đã tạo trong ActiveExchanges
-    console.log("clicked");
     const res = await firebase.firestore().collection("Users").doc(model.currentUser.email).collection("ActiveExchanges").doc(id).update({
         "Status": 1
     });
+    view.setActiveScreen("activeExchanges")
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------
@@ -278,7 +278,7 @@ const FetchDataB1 = async () => { //display bảng nguồn thu tăng theo % Pass
                             <td>${data.InterestRate}</td>
                             <td>${data.StartDate}</td>
                             <td>${Passive1(data.Amount, data.InterestRate, data.StartDate)}</td>
-                            <td onclick="BB('${doc.id}')"><img src="../img/deleteIcon.png" height="50px" width="50px"></td>
+                            <td onclick="BB1('${doc.id}')"><img src="../img/deleteIcon.png" height="50px" width="50px"></td>
                            </tr>`;
                 let table = document.getElementById('passiveincomeTable1')
                 table.innerHTML += row
@@ -300,7 +300,7 @@ const FetchDataB2 = async () => { //display bảng nguồn thu tăng đều Pass
                             <td>${data.Amount}</td>
                             <td>${data.StartDate}</td>
                             <td>${Passive2(data.Amount, data.StartDate)}</td>
-                            <td onclick="BB('${doc.id}')"><img src="../img/deleteIcon.png" height="50px" width="50px"></td>
+                            <td onclick="BB2('${doc.id}')"><img src="../img/deleteIcon.png" height="50px" width="50px"></td>
                            </tr>`;
                 let table = document.getElementById('passiveincomeTable2')
                 table.innerHTML += row
@@ -312,7 +312,6 @@ const FetchDataB2 = async () => { //display bảng nguồn thu tăng đều Pass
 }
 
 const FetchDataC = async () => { //display bảng chi tiêu ActiveExchanges
-    console.log("helo")
     const res = await firebase.firestore().collection("Users").doc(model.currentUser.email).collection("ActiveExchanges").where("Status", "==", 0).orderBy("Date", "desc")
         .get()
         .then(querySnapshot => {
@@ -327,34 +326,12 @@ const FetchDataC = async () => { //display bảng chi tiêu ActiveExchanges
                            </tr>`;
                 let table = document.getElementById('activeExchangesTable')
                 table.innerHTML += row
-                console.log("alo")
             })
         })
         .catch(err => {
             console.log(`Error: ${err}`)
         });
 }
-
-// const FetchDataC2 = async () => { //display bảng thu nhập ActiveExchanges
-//     const res = await firebase.firestore().collection("Users").doc(model.currentUser.email).collection("PassiveIncome").where("Type", "==", 4).where("Status", "==", 0)
-//         .get()
-//         .then(querySnapshot => {
-//             querySnapshot.forEach(doc => {
-//                 let data = doc.data();
-//                 let row = `<tr>
-//                             <td>${doc.Name}</td>
-//                             <td>${data.Amount}</td>
-//                             <td>${data.Date}</td>
-//                             <td onclick="CC('${doc.id}')"><img src="../img/deleteIcon.png"></td>
-//                            </tr>`;
-//                 let table = document.getElementById('myTable')
-//                 table.innerHTML += row
-//             })
-//         })
-//         .catch(err => {
-//             console.log(`Error: ${err}`)
-//         });
-// }
 
 function monthDiff(d1) { // tính số tháng chênh lệch để tính tiền của các mức thu nhập bị động
     var monthdiff;
@@ -387,7 +364,7 @@ function Type(aetype) {
     if (aetype === 3) {
         return "Income"
     }
-    else{
+    else {
         return "Expense"
     }
 }

@@ -77,16 +77,16 @@ controller.login = (dataLogin) => {
 
 controller.savingsForm = (dataSavings) => {
     if (dataSavings.name.trim() === "") {
-
+        document.getElementById("name-error").innerText = "Name is missing"
     }
     else {
-
+        document.getElementById("name-error").innerText = ""
     }
-    if (dataSavings.amount === ""){
-
+    if (dataSavings.amount === "") {
+        document.getElementById("amount-error").innerText = "Amount is missing"
     }
-    else{
-
+    else {
+        document.getElementById("amount-error").innerText = ""
     }
     if (dataSavings.name.trim() !== "" && dataSavings.amount !== "") {
         dataSavings = {
@@ -99,28 +99,28 @@ controller.savingsForm = (dataSavings) => {
 
 controller.passiveIncomeForm1 = (dataPI1) => {
     if (dataPI1.name.trim() === "") {
-
+        document.getElementById("name-error").innerText = "Name is missing"
     }
     else {
-
+        document.getElementById("name-error").innerText = ""
     }
-    if (dataPI1.amount === ""){
-
+    if (dataPI1.amount === "") {
+        document.getElementById("amount-error").innerText = "Amount is missing"
     }
-    else{
-
+    else {
+        document.getElementById("amount-error").innerText = ""
     }
-    if (dataPI1.rate === ""){
-
+    if (dataPI1.rate === "") {
+        document.getElementById("rate-error").innerText = "Rate is missing"
     }
-    else{
-
+    else {
+        document.getElementById("rate-error").innerText = ""
     }
     if (Date.parse(dataPI1.date) > Date.parse(new Date())) {
-
+        document.getElementById("date-error").innerText = "Date is not suitable"
     }
     else {
-
+        document.getElementById("date-error").innerText = ""
     }
     if (dataPI1.name.trim() !== "" && Date.parse(dataPI1.date) <= Date.parse(new Date()) && dataPI1.rate !== "" && dataPI1.amount !== "") {
         dataPI1 = {
@@ -135,22 +135,22 @@ controller.passiveIncomeForm1 = (dataPI1) => {
 
 controller.passiveIncomeForm2 = (dataPI2) => {
     if (dataPI2.name.trim() === "") {
-
+        document.getElementById("name-error").innerText = "Name is missing"
     }
     else {
-
+        document.getElementById("name-error").innerText = ""
     }
-    if (dataPI2.amount === ""){
-
+    if (dataPI2.amount === "") {
+        document.getElementById("amount-error").innerText = "Amount is missing"
     }
-    else{
-
+    else {
+        document.getElementById("amount-error").innerText = ""
     }
     if (Date.parse(dataPI2.date) > Date.parse(new Date())) {
-
+        document.getElementById("date-error").innerText = "Date is not suitable"
     }
     else {
-
+        document.getElementById("date-error").innerText = ""
     }
     if (dataPI2.name.trim() !== "" && Date.parse(dataPI2.date) <= Date.parse(new Date()) && dataPI2.amount !== "") {
         dataPI2 = {
@@ -164,22 +164,22 @@ controller.passiveIncomeForm2 = (dataPI2) => {
 
 controller.AEForm = (dataAE) => {
     if (dataAE.name.trim() === "") {
-
+        document.getElementById("name-error").innerText = "Name is missing"
     }
     else {
-
+        document.getElementById("name-error").innerText = ""
     }
-    if (dataAE.amount === ""){
-
+    if (dataAE.amount === "") {
+        document.getElementById("amount-error").innerText = "Amount is missing"
     }
-    else{
-
+    else {
+        document.getElementById("amount-error").innerText = ""
     }
     if (Date.parse(dataAE.date) > Date.parse(new Date())) {
-
+        document.getElementById("date-error").innerText = "Date is not suitable"
     }
     else {
-
+        document.getElementById("date-error").innerText = ""
     }
     if (dataAE.name.trim() !== "" && Date.parse(dataAE.date) <= Date.parse(new Date()) && dataAE.amount !== "") {
         dataAE = {

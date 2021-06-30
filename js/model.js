@@ -82,7 +82,7 @@ model.passiveIncomeForm1 = async (dataPI1) =>{
         "Type": 1,
         "Status": 0
     })
-    view.setActiveScreen("passiveIncome")
+    view.setActiveScreen("passiveIncome1")
 }
 
 model.passiveIncomeForm2 = async (dataPI2) =>{

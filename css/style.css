@@ -16,15 +16,6 @@
     margin-bottom: 10px;
 }
 
-.btn {
-    cursor: pointer;
-    padding: 10px 20px;
-    background-color: blue;
-    color: white;
-    outline: none;
-    border-radius: 5px;
-}
-
 .error {
     color: red;
 }
@@ -75,5 +66,23 @@
     height: 600px;
 
 }
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+#display-content{
+    margin: 20px 50px
+}
+
+#adddiv{
+    display: flex;
+    justify-content: flex-end;
+    padding: 0px 10px;
+  }
+
 
 

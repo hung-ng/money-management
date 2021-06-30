@@ -43,6 +43,7 @@ view.setActiveScreen = (screenName) => {
 
         case "homeScreen":
             document.getElementById('main').innerHTML = component.homeScreen;
+            document.getElementById('username').innerText = model.currentUser.displayName;
             Balance();
             BalanceDisplay();
             document.getElementById("sign-out").addEventListener('click', () => {
@@ -55,7 +56,10 @@ view.setActiveScreen = (screenName) => {
             document.getElementById('savings').addEventListener('click', () => {
                 view.setActiveScreen('savings');
             })
-            document.getElementById('passiveincome').addEventListener('click', () => {
+            document.getElementById('passiveincome1').addEventListener('click', () => {
+                view.setActiveScreen('passiveIncome1');
+            })
+            document.getElementById('passiveincome2').addEventListener('click', () => {
                 view.setActiveScreen('passiveIncome2');
             })
             document.getElementById('activeexchanges').addEventListener('click', () => {
@@ -68,6 +72,7 @@ view.setActiveScreen = (screenName) => {
 
         case "savings":
             document.getElementById('main').innerHTML = component.savings;
+            document.getElementById('username').innerText = model.currentUser.displayName;
             document.getElementById("sign-out").addEventListener('click', () => {
                 firebase.auth().signOut();
                 view.setActiveScreen("loginScreen");
@@ -78,8 +83,11 @@ view.setActiveScreen = (screenName) => {
             document.getElementById('savings').addEventListener('click', () => {
                 view.setActiveScreen('savings');
             })
-            document.getElementById('passiveincome').addEventListener('click', () => {
-                view.setActiveScreen('passiveIncome');
+            document.getElementById('passiveincome1').addEventListener('click', () => {
+                view.setActiveScreen('passiveIncome1');
+            })
+            document.getElementById('passiveincome2').addEventListener('click', () => {
+                view.setActiveScreen('passiveIncome2');
             })
             document.getElementById('activeexchanges').addEventListener('click', () => {
                 view.setActiveScreen('activeExchanges');
@@ -93,6 +101,7 @@ view.setActiveScreen = (screenName) => {
 
         case "savingsForm":
             document.getElementById('main').innerHTML = component.savingsForm;
+            document.getElementById('username').innerText = model.currentUser.displayName;
             document.getElementById("sign-out").addEventListener('click', () => {
                 firebase.auth().signOut();
                 view.setActiveScreen("loginScreen");
@@ -103,8 +112,11 @@ view.setActiveScreen = (screenName) => {
             document.getElementById('savings').addEventListener('click', () => {
                 view.setActiveScreen('savings');
             })
-            document.getElementById('passiveincome').addEventListener('click', () => {
-                view.setActiveScreen('passiveIncome');
+            document.getElementById('passiveincome1').addEventListener('click', () => {
+                view.setActiveScreen('passiveIncome1');
+            })
+            document.getElementById('passiveincome2').addEventListener('click', () => {
+                view.setActiveScreen('passiveIncome2');
             })
             document.getElementById('activeexchanges').addEventListener('click', () => {
                 view.setActiveScreen('activeExchanges');
@@ -126,8 +138,9 @@ view.setActiveScreen = (screenName) => {
 
         //------------------------------------------------------------------------
 
-        case "passiveIncome":
-            document.getElementById('main').innerHTML = component.passiveIncome;
+        case "passiveIncome1":
+            document.getElementById('main').innerHTML = component.passiveIncome1;
+            document.getElementById('username').innerText = model.currentUser.displayName;
             document.getElementById("sign-out").addEventListener('click', () => {
                 firebase.auth().signOut();
                 view.setActiveScreen("loginScreen");
@@ -138,8 +151,11 @@ view.setActiveScreen = (screenName) => {
             document.getElementById('savings').addEventListener('click', () => {
                 view.setActiveScreen('savings');
             })
-            document.getElementById('passiveincome').addEventListener('click', () => {
-                view.setActiveScreen('passiveIncome');
+            document.getElementById('passiveincome1').addEventListener('click', () => {
+                view.setActiveScreen('passiveIncome1');
+            })
+            document.getElementById('passiveincome2').addEventListener('click', () => {
+                view.setActiveScreen('passiveIncome2');
             })
             document.getElementById('activeexchanges').addEventListener('click', () => {
                 view.setActiveScreen('activeExchanges');
@@ -154,6 +170,7 @@ view.setActiveScreen = (screenName) => {
 
         case "passiveIncomeForm1":
             document.getElementById('main').innerHTML = component.passiveIncomeForm1;
+            document.getElementById('username').innerText = model.currentUser.displayName;
             document.getElementById("sign-out").addEventListener('click', () => {
                 firebase.auth().signOut();
                 view.setActiveScreen("loginScreen");
@@ -164,14 +181,17 @@ view.setActiveScreen = (screenName) => {
             document.getElementById('savings').addEventListener('click', () => {
                 view.setActiveScreen('savings');
             })
-            document.getElementById('passiveincome').addEventListener('click', () => {
-                view.setActiveScreen('passiveIncome');
+            document.getElementById('passiveincome1').addEventListener('click', () => {
+                view.setActiveScreen('passiveIncome1');
+            })
+            document.getElementById('passiveincome2').addEventListener('click', () => {
+                view.setActiveScreen('passiveIncome2');
             })
             document.getElementById('activeexchanges').addEventListener('click', () => {
                 view.setActiveScreen('activeExchanges');
             })
             document.getElementById('redirect-to-PI1').addEventListener('click', () => {
-                view.setActiveScreen('passiveIncome');
+                view.setActiveScreen('passiveIncome1');
             });
             document.getElementById('date').valueAsDate = new Date();
             const PIForm1 = document.getElementById('PIForm1');
@@ -192,6 +212,7 @@ view.setActiveScreen = (screenName) => {
 
         case "passiveIncome2":
             document.getElementById('main').innerHTML = component.passiveIncome2;
+            document.getElementById('username').innerText = model.currentUser.displayName;
             document.getElementById("sign-out").addEventListener('click', () => {
                 firebase.auth().signOut();
                 view.setActiveScreen("loginScreen");
@@ -202,8 +223,11 @@ view.setActiveScreen = (screenName) => {
             document.getElementById('savings').addEventListener('click', () => {
                 view.setActiveScreen('savings');
             })
-            document.getElementById('passiveincome').addEventListener('click', () => {
-                view.setActiveScreen('passiveIncome');
+            document.getElementById('passiveincome1').addEventListener('click', () => {
+                view.setActiveScreen('passiveIncome1');
+            })
+            document.getElementById('passiveincome2').addEventListener('click', () => {
+                view.setActiveScreen('passiveIncome2');
             })
             document.getElementById('activeexchanges').addEventListener('click', () => {
                 view.setActiveScreen('activeExchanges');
@@ -216,45 +240,9 @@ view.setActiveScreen = (screenName) => {
             PITotal();
             break;
 
-            case "passiveIncomeForm2":
-                document.getElementById('main').innerHTML = component.passiveIncomeForm2;
-                document.getElementById("sign-out").addEventListener('click', () => {
-                    firebase.auth().signOut();
-                    view.setActiveScreen("loginScreen");
-                })
-                document.getElementById("home").addEventListener('click', () => {
-                    view.setActiveScreen("homeScreen")
-                })
-                document.getElementById('savings').addEventListener('click', () => {
-                    view.setActiveScreen('savings');
-                })
-                document.getElementById('passiveincome').addEventListener('click', () => {
-                    view.setActiveScreen('passiveIncome');
-                })
-                document.getElementById('activeexchanges').addEventListener('click', () => {
-                    view.setActiveScreen('activeExchanges');
-                })
-                document.getElementById('redirect-to-PI2').addEventListener('click', () => {
-                    view.setActiveScreen('passiveIncome2');
-                });
-                document.getElementById('date').valueAsDate = new Date();
-                const PIForm2 = document.getElementById('PIForm2');
-                PIForm2.addEventListener('submit', (event) => {
-                    event.preventDefault();
-                    const dataPI2 = {
-                        name: PIForm2.name.value,
-                        amount: PIForm2.amount.value,
-                        date: PIForm2.date.value
-                    }
-                    controller.passiveIncomeForm2(dataPI2);
-                })
-    
-                break;
-
-        //--------------------------------------------------------------------------------
-
-        case "activeExchanges":
-            document.getElementById('main').innerHTML = component.activeExchanges;
+        case "passiveIncomeForm2":
+            document.getElementById('main').innerHTML = component.passiveIncomeForm2;
+            document.getElementById('username').innerText = model.currentUser.displayName;
             document.getElementById("sign-out").addEventListener('click', () => {
                 firebase.auth().signOut();
                 view.setActiveScreen("loginScreen");
@@ -265,8 +253,52 @@ view.setActiveScreen = (screenName) => {
             document.getElementById('savings').addEventListener('click', () => {
                 view.setActiveScreen('savings');
             })
-            document.getElementById('passiveincome').addEventListener('click', () => {
-                view.setActiveScreen('passiveIncome');
+            document.getElementById('passiveincome1').addEventListener('click', () => {
+                view.setActiveScreen('passiveIncome1');
+            })
+            document.getElementById('passiveincome2').addEventListener('click', () => {
+                view.setActiveScreen('passiveIncome2');
+            })
+            document.getElementById('activeexchanges').addEventListener('click', () => {
+                view.setActiveScreen('activeExchanges');
+            })
+            document.getElementById('redirect-to-PI2').addEventListener('click', () => {
+                view.setActiveScreen('passiveIncome2');
+            });
+            document.getElementById('date').valueAsDate = new Date();
+            const PIForm2 = document.getElementById('PIForm2');
+            PIForm2.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const dataPI2 = {
+                    name: PIForm2.name.value,
+                    amount: PIForm2.amount.value,
+                    date: PIForm2.date.value
+                }
+                controller.passiveIncomeForm2(dataPI2);
+            })
+
+            break;
+
+        //--------------------------------------------------------------------------------
+
+        case "activeExchanges":
+            document.getElementById('main').innerHTML = component.activeExchanges;
+            document.getElementById('username').innerText = model.currentUser.displayName;
+            document.getElementById("sign-out").addEventListener('click', () => {
+                firebase.auth().signOut();
+                view.setActiveScreen("loginScreen");
+            })
+            document.getElementById("home").addEventListener('click', () => {
+                view.setActiveScreen("homeScreen")
+            })
+            document.getElementById('savings').addEventListener('click', () => {
+                view.setActiveScreen('savings');
+            })
+            document.getElementById('passiveincome1').addEventListener('click', () => {
+                view.setActiveScreen('passiveIncome1');
+            })
+            document.getElementById('passiveincome2').addEventListener('click', () => {
+                view.setActiveScreen('passiveIncome2');
             })
             document.getElementById('activeexchanges').addEventListener('click', () => {
                 view.setActiveScreen('activeExchanges');
@@ -274,12 +306,6 @@ view.setActiveScreen = (screenName) => {
             document.getElementById('redirectToAEForm').addEventListener('click', () => {
                 view.setActiveScreen('AEForm');
             });
-            // document.getElementById('c1').addEventListener('click', () => {
-            //     view.setActiveScreen('c1');
-            // })
-            // document.getElementById('c2').addEventListener('click', () => {
-            //     view.setActiveScreen('c2');
-            // })
             FetchDataC()
             sumAE1()
             sumAE2()
@@ -289,6 +315,7 @@ view.setActiveScreen = (screenName) => {
 
         case "AEForm":
             document.getElementById('main').innerHTML = component.AEForm;
+            document.getElementById('username').innerText = model.currentUser.displayName;
             document.getElementById("sign-out").addEventListener('click', () => {
                 firebase.auth().signOut();
                 view.setActiveScreen("loginScreen");
@@ -299,8 +326,11 @@ view.setActiveScreen = (screenName) => {
             document.getElementById('savings').addEventListener('click', () => {
                 view.setActiveScreen('savings');
             })
-            document.getElementById('passiveincome').addEventListener('click', () => {
-                view.setActiveScreen('passiveIncome');
+            document.getElementById('passiveincome1').addEventListener('click', () => {
+                view.setActiveScreen('passiveIncome1');
+            })
+            document.getElementById('passiveincome2').addEventListener('click', () => {
+                view.setActiveScreen('passiveIncome2');
             })
             document.getElementById('activeexchanges').addEventListener('click', () => {
                 view.setActiveScreen('activeExchanges');
@@ -321,20 +351,5 @@ view.setActiveScreen = (screenName) => {
                 controller.AEForm(dataAE);
             })
             break;
-        // case "c2":
-        //     document.getElementById('main').innerHTML = component.c2;
-        //     document.getElementById("home").addEventListener('click', () => {
-        //         view.setActiveScreen("homeScreen")
-        //     })
-        //     document.getElementById('savings').addEventListener('click', () => {
-        //         view.setActiveScreen('savings');
-        //     })
-        //     document.getElementById('passiveincome').addEventListener('click', () => {
-        //         view.setActiveScreen('passiveIncome');
-        //     })
-        //     document.getElementById('activeexchanges').addEventListener('click', () => {
-        //         view.setActiveScreen('activeExchanges');
-        //     })
-        //     break;
     }
 }

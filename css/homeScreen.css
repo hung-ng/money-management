@@ -1,19 +1,8 @@
-#sign-out 
-{
-    border: none; 
-    position: absolute; 
-    top: 15px;
-    right: 15px;
-    font-size: 20px;
-    width: fit-content;
-    height: 30px;
-    line-height : 30px;
-    border-radius: 5px;
-}
-@import url('https://fonts.googleapis.com/css2?family=Economica&display=swap');
+
+/* @import url('https://fonts.googleapis.com/css2?family=Economica&display=swap');
 body {
   font-family: 'Economica', sans-serif;   
-  /* background-image:url(''); */
+  background-image:url('');
 
 }
 
@@ -84,7 +73,7 @@ background-color: black;
   transition: 0.3s;
   width: 80px;
    
-}
+} */
 
  
 
