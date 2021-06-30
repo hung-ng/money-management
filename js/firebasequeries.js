@@ -13,10 +13,9 @@ const BalanceDisplay = async () => {
             console.log(`Error: ${err}`)
         });
     let data = res.data()
-    let row = `<tr>
-                    <td>${data.Balance}</td>
-                </tr>`;
-    let table = document.getElementById('balanceTable')
+    let row = `
+    <h3>${data.Balance}</h3>`
+    let table = document.getElementById('display-content')
     table.innerHTML += row
 }
 
@@ -368,6 +367,3 @@ function Type(aetype) {
         return "Expense"
     }
 }
-
-// const testNhe = document.getElementById("testNhe");
-// testNhe.addEventListener('click', FetchDataA);
