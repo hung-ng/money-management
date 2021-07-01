@@ -254,7 +254,7 @@ const FetchDataA = async () => { //display bảng Savings
                 let row = `<tr>
                             <td>${data.Name}</td>
                             <td>${data.Amount}</td>
-                            <td onclick="AA('${doc.id}')"><img src="../img/deleteIcon.png" height="50px" width="50px"></td>
+                            <td onclick="AA('${doc.id}')"><img class="cursor-pointer" src="../img/deleteIcon.png" height="50px" width="50px"></td>
                            </tr>`;
                 let table = document.getElementById('savingsTable')
                 table.innerHTML += row
@@ -277,7 +277,7 @@ const FetchDataB1 = async () => { //display bảng nguồn thu tăng theo % Pass
                             <td>${data.InterestRate}</td>
                             <td>${data.StartDate}</td>
                             <td>${Passive1(data.Amount, data.InterestRate, data.StartDate)}</td>
-                            <td onclick="BB1('${doc.id}')"><img src="../img/deleteIcon.png" height="50px" width="50px"></td>
+                            <td onclick="BB1('${doc.id}')"><img class="cursor-pointer" src="../img/deleteIcon.png" height="50px" width="50px"></td>
                            </tr>`;
                 let table = document.getElementById('passiveincomeTable1')
                 table.innerHTML += row
@@ -299,7 +299,7 @@ const FetchDataB2 = async () => { //display bảng nguồn thu tăng đều Pass
                             <td>${data.Amount}</td>
                             <td>${data.StartDate}</td>
                             <td>${Passive2(data.Amount, data.StartDate)}</td>
-                            <td onclick="BB2('${doc.id}')"><img src="../img/deleteIcon.png" height="50px" width="50px"></td>
+                            <td onclick="BB2('${doc.id}')"><img class="cursor-pointer" src="../img/deleteIcon.png" height="50px" width="50px"></td>
                            </tr>`;
                 let table = document.getElementById('passiveincomeTable2')
                 table.innerHTML += row
@@ -321,7 +321,7 @@ const FetchDataC = async () => { //display bảng chi tiêu ActiveExchanges
                             <td>${data.Amount}</td>
                             <td>${data.Date}</td>
                             <td>${Type(data.Type)}</td>
-                            <td onclick="CC('${doc.id}')"><img src="../img/deleteIcon.png" height="50px" width="50px"></td>
+                            <td onclick="CC('${doc.id}')"><img class="cursor-pointer" src="../img/deleteIcon.png" height="50px" width="50px"></td>
                            </tr>`;
                 let table = document.getElementById('activeExchangesTable')
                 table.innerHTML += row
