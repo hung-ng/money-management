@@ -47,7 +47,9 @@ model.login = async (dataLogin) => {
         const response = await firebase
             .auth()
             .signInWithEmailAndPassword(dataLogin.email, dataLogin.password);
-
+        if (response.user.emailVerified === false) {
+            alert("Your email is not verified")
+        }
     }
     catch (err) {
         console.log("err", err);
@@ -73,7 +75,7 @@ model.savingsForm = async (dataSavings) => {
     view.setActiveScreen("savings")
 }
 
-model.passiveIncomeForm1 = async (dataPI1) =>{
+model.passiveIncomeForm1 = async (dataPI1) => {
     const res = await firebase.firestore().collection("Users").doc(model.currentUser.email).collection("PassiveIncome").add({
         "Name": dataPI1.name,
         "Amount": dataPI1.amount,
@@ -85,7 +87,7 @@ model.passiveIncomeForm1 = async (dataPI1) =>{
     view.setActiveScreen("passiveIncome1")
 }
 
-model.passiveIncomeForm2 = async (dataPI2) =>{
+model.passiveIncomeForm2 = async (dataPI2) => {
     const res = await firebase.firestore().collection("Users").doc(model.currentUser.email).collection("PassiveIncome").add({
         "Name": dataPI2.name,
         "Amount": dataPI2.amount,
