@@ -14,7 +14,7 @@ const BalanceDisplay = async () => {
         });
     let data = res.data()
     let row = `
-    <h3>${data.Balance}</h3>`
+    <h3>${numberWithCommas(data.Balance)}</h3>`
     let table = document.getElementById('display-content')
     table.innerHTML += row
 }
@@ -253,7 +253,7 @@ const FetchDataA = async () => { //display bảng Savings
                 let data = doc.data();
                 let row = `<tr>
                             <td>${data.Name}</td>
-                            <td>${data.Amount}</td>
+                            <td>${numberWithCommas(data.Amount)}</td>
                             <td onclick="AA('${doc.id}')"><img class="cursor-pointer" src="../img/deleteIcon.png" height="50px" width="50px"></td>
                            </tr>`;
                 let table = document.getElementById('savingsTable')
@@ -273,10 +273,10 @@ const FetchDataB1 = async () => { //display bảng nguồn thu tăng theo % Pass
                 let data = doc.data();
                 let row = `<tr>
                             <td>${data.Name}</td>
-                            <td>${data.Amount}</td>
+                            <td>${numberWithCommas(data.Amount)}</td>
                             <td>${data.InterestRate}</td>
                             <td>${data.StartDate}</td>
-                            <td>${Passive1(data.Amount, data.InterestRate, data.StartDate)}</td>
+                            <td>${numberWithCommas(Passive1(data.Amount, data.InterestRate, data.StartDate))}</td>
                             <td onclick="BB1('${doc.id}')"><img class="cursor-pointer" src="../img/deleteIcon.png" height="50px" width="50px"></td>
                            </tr>`;
                 let table = document.getElementById('passiveincomeTable1')
@@ -296,9 +296,9 @@ const FetchDataB2 = async () => { //display bảng nguồn thu tăng đều Pass
                 let data = doc.data();
                 let row = `<tr>
                             <td>${data.Name}</td>
-                            <td>${data.Amount}</td>
+                            <td>${numberWithCommas(data.Amount)}</td>
                             <td>${data.StartDate}</td>
-                            <td>${Passive2(data.Amount, data.StartDate)}</td>
+                            <td>${numberWithCommas(Passive2(data.Amount, data.StartDate))}</td>
                             <td onclick="BB2('${doc.id}')"><img class="cursor-pointer" src="../img/deleteIcon.png" height="50px" width="50px"></td>
                            </tr>`;
                 let table = document.getElementById('passiveincomeTable2')
@@ -318,7 +318,7 @@ const FetchDataC = async () => { //display bảng chi tiêu ActiveExchanges
                 let data = doc.data();
                 let row = `<tr>
                             <td>${data.Name}</td>
-                            <td>${data.Amount}</td>
+                            <td>${numberWithCommas(data.Amount)}</td>
                             <td>${data.Date}</td>
                             <td>${Type(data.Type)}</td>
                             <td onclick="CC('${doc.id}')"><img class="cursor-pointer" src="../img/deleteIcon.png" height="50px" width="50px"></td>
@@ -366,4 +366,8 @@ function Type(aetype) {
     else {
         return "Expense"
     }
+}
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
