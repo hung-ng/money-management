@@ -108,9 +108,6 @@ component.homeScreen = `
 </nav>
 
 <div id="content">
-  <button type="button" id="sidebarCollapse" class="btn btn-info">
-    <i class="fas fa-align-left"></i>
-  </button>
   <div id="display-content">
     <h1>Balance</h1>
   </div>
@@ -155,9 +152,6 @@ component.savings = `
 </nav>
 
 <div id="content">
-  <button type="button" id="sidebarCollapse" class="btn btn-info">
-    <i class="fas fa-align-left"></i>
-  </button>
   <div id="display-content">
     <div id="adddiv">
       <div class="cursor-pointer" id="redirectToForm"><img src="../img/Plus-Icon.png" height="30px"
@@ -217,9 +211,6 @@ component.savingsForm = `
 </nav>
 
 <div id="content">
-  <button type="button" id="sidebarCollapse" class="btn btn-info">
-    <i class="fas fa-align-left"></i>
-  </button>
   <div id="display-content">
     <h2>Create new Saving</h2>
     <form id="savings-form">
@@ -277,9 +268,6 @@ component.passiveIncome1 = `
 </nav>
 
 <div id="content">
-  <button type="button" id="sidebarCollapse" class="btn btn-info">
-    <i class="fas fa-align-left"></i>
-  </button>
   <div id="display-content">
     <div id="adddiv">
       <div class="cursor-pointer" id="redirectToPIForm1"><img src="../img/Plus-Icon.png" height="30px"
@@ -343,9 +331,6 @@ component.passiveIncomeForm1 = `
 </nav>
 
 <div id="content">
-  <button type="button" id="sidebarCollapse" class="btn btn-info">
-    <i class="fas fa-align-left"></i>
-  </button>
   <div id="display-content">
     <h2>Create new Passive Income Increased by Percent</h2>
     <form id="PIForm1">
@@ -412,9 +397,6 @@ component.passiveIncome2 = `
 </nav>
 
 <div id="content">
-  <button type="button" id="sidebarCollapse" class="btn btn-info">
-    <i class="fas fa-align-left"></i>
-  </button>
   <div id="display-content">
     <div id="adddiv">
       <div class="cursor-pointer" id="redirectToPIForm2"><img src="../img/Plus-Icon.png" height="30px"
@@ -476,9 +458,6 @@ component.passiveIncomeForm2 = `
 </nav>
 
 <div id="content">
-  <button type="button" id="sidebarCollapse" class="btn btn-info">
-    <i class="fas fa-align-left"></i>
-  </button>
   <div id="display-content">
     <h2>Create new Passive Income Increased Uniformly</h2>
     <form id="PIForm2">
@@ -542,9 +521,6 @@ component.activeExchanges = `
 </nav>
 
 <div id="content">
-  <button type="button" id="sidebarCollapse" class="btn btn-info">
-    <i class="fas fa-align-left"></i>
-  </button>
   <div id="display-content">
     <div id="adddiv">
       <div class="cursor-pointer" id="redirectToAEForm"><img src="../img/Plus-Icon.png" height="30px"
@@ -606,9 +582,6 @@ component.AEForm = `
 </nav>
 
 <div id="content">
-  <button type="button" id="sidebarCollapse" class="btn btn-info">
-    <i class="fas fa-align-left"></i>
-  </button>
   <div id="display-content">
     <h2>Create New Active Exchanges</h2>
     <form id="AEForm">
