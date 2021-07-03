@@ -2,8 +2,12 @@ const Balance = async () => {
     const res = await firebase.firestore().collection("Users").doc(model.currentUser.email)
         .get()
     let data = res.data()
-    result = data.PITotal + data.SavingsTotal + data.AETotal
+    result = data.PITotal + data.AETotal
     const res1 = await firebase.firestore().collection("Users").doc(model.currentUser.email).update({ "Balance": result });
+    if(data.Balance<data.SavingsTotal){
+        alert("Your balance is below your total savings!!!")
+    }
+
 }
 
 const BalanceDisplay = async () => {
