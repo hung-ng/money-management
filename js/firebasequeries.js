@@ -4,7 +4,7 @@ const Balance = async () => {
     let data = res.data()
     result = data.PITotal + data.AETotal
     const res1 = await firebase.firestore().collection("Users").doc(model.currentUser.email).update({ "Balance": result });
-    if(data.Balance<data.SavingsTotal){
+    if (data.Balance < data.SavingsTotal) {
         alert("Your balance is below your total savings!!!")
     }
 
@@ -247,6 +247,20 @@ const CC = async (id) => { // xóa doc chứa thu/chi đã tạo trong ActiveExc
     view.setActiveScreen("activeExchanges")
 }
 
+const CC1 = async (id) => { // xóa doc chứa thu/chi đã tạo trong ActiveExchanges
+    const res = await firebase.firestore().collection("Users").doc(model.currentUser.email).collection("ActiveExchanges").doc(id).update({
+        "Status": 1
+    });
+    FetchDataC1()
+}
+
+const CC2 = async (id) => { // xóa doc chứa thu/chi đã tạo trong ActiveExchanges
+    const res = await firebase.firestore().collection("Users").doc(model.currentUser.email).collection("ActiveExchanges").doc(id).update({
+        "Status": 1
+    });
+    FetchDataC2()
+}
+
 //-------------------------------------------------------------------------------------------------------------------------------------
 
 const FetchDataA = async () => { //display bảng Savings
@@ -318,6 +332,7 @@ const FetchDataC = async () => { //display bảng chi tiêu ActiveExchanges
     const res = await firebase.firestore().collection("Users").doc(model.currentUser.email).collection("ActiveExchanges").where("Status", "==", 0).orderBy("Date", "desc")
         .get()
         .then(querySnapshot => {
+            document.getElementById('activeExchangesTable').innerHTML = ``
             querySnapshot.forEach(doc => {
                 let data = doc.data();
                 let row = `<tr>
@@ -326,6 +341,52 @@ const FetchDataC = async () => { //display bảng chi tiêu ActiveExchanges
                             <td>${data.Date}</td>
                             <td>${Type(data.Type)}</td>
                             <td onclick="CC('${doc.id}')"><img class="cursor-pointer" src="../img/deleteIcon.png" height="50px" width="50px"></td>
+                           </tr>`;
+                let table = document.getElementById('activeExchangesTable')
+                table.innerHTML += row
+            })
+        })
+        .catch(err => {
+            console.log(`Error: ${err}`)
+        });
+}
+
+const FetchDataC1 = async () => { //display bảng chi tiêu ActiveExchanges
+    const res = await firebase.firestore().collection("Users").doc(model.currentUser.email).collection("ActiveExchanges").where("Type", "==", 3).where("Status", "==", 0).orderBy("Date", "desc")
+        .get()
+        .then(querySnapshot => {
+            document.getElementById('activeExchangesTable').innerHTML = ``
+            querySnapshot.forEach(doc => {
+                let data = doc.data();
+                let row = `<tr>
+                            <td>${data.Name}</td>
+                            <td>${numberWithCommas(data.Amount)}</td>
+                            <td>${data.Date}</td>
+                            <td>${Type(data.Type)}</td>
+                            <td onclick="CC1('${doc.id}')"><img class="cursor-pointer" src="../img/deleteIcon.png" height="50px" width="50px"></td>
+                           </tr>`;
+                let table = document.getElementById('activeExchangesTable')
+                table.innerHTML += row
+            })
+        })
+        .catch(err => {
+            console.log(`Error: ${err}`)
+        });
+}
+
+const FetchDataC2 = async () => { //display bảng chi tiêu ActiveExchanges
+    const res = await firebase.firestore().collection("Users").doc(model.currentUser.email).collection("ActiveExchanges").where("Type", "==", 4).where("Status", "==", 0).orderBy("Date", "desc")
+        .get()
+        .then(querySnapshot => {
+            document.getElementById('activeExchangesTable').innerHTML = ``
+            querySnapshot.forEach(doc => {
+                let data = doc.data();
+                let row = `<tr>
+                            <td>${data.Name}</td>
+                            <td>${numberWithCommas(data.Amount)}</td>
+                            <td>${data.Date}</td>
+                            <td>${Type(data.Type)}</td>
+                            <td onclick="CC2('${doc.id}')"><img class="cursor-pointer" src="../img/deleteIcon.png" height="50px" width="50px"></td>
                            </tr>`;
                 let table = document.getElementById('activeExchangesTable')
                 table.innerHTML += row

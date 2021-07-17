@@ -27,6 +27,9 @@ view.setActiveScreen = (screenName) => {
             document.getElementById('redirect-to-register').addEventListener('click', () => {
                 view.setActiveScreen('registerScreen');
             });
+            document.getElementById('forgotPassword').addEventListener('click', () => {
+                view.setActiveScreen('forgotPassword');
+            });
 
             const loginForm = document.getElementById('login-form');
             loginForm.addEventListener('submit', (event) => {
@@ -36,6 +39,23 @@ view.setActiveScreen = (screenName) => {
                     password: loginForm.password.value
                 }
                 controller.login(dataLogin);
+            })
+
+            break;
+
+            case "forgotPassword":
+            document.getElementById('main').innerHTML = component.forgotPassword;
+            document.getElementById('cancel').addEventListener('click', () => {
+                view.setActiveScreen('loginScreen');
+            });
+
+            const forgotPasswordForm = document.getElementById('forgotPassword-form');
+            forgotPasswordForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const dataForgotPassword = {
+                    email: forgotPasswordForm.email.value,
+                }
+                controller.forgotPassword(dataForgotPassword);
             })
 
             break;
@@ -65,7 +85,6 @@ view.setActiveScreen = (screenName) => {
             document.getElementById('activeexchanges').addEventListener('click', () => {
                 view.setActiveScreen('activeExchanges');
             })
-
             break;
 
         //-------------------------------------------------------------------------
@@ -305,7 +324,10 @@ view.setActiveScreen = (screenName) => {
             })
             document.getElementById('redirectToAEForm').addEventListener('click', () => {
                 view.setActiveScreen('AEForm');
-            });
+            })
+            document.getElementById('fetchall').addEventListener('click', FetchDataC )
+            document.getElementById('fetchincome').addEventListener('click', FetchDataC1 )
+            document.getElementById('fetchexpense').addEventListener('click', FetchDataC2 )
             FetchDataC()
             sumAE1()
             sumAE2()

@@ -5,12 +5,14 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Money Easy</title>
+  <link rel="icon" href="../img/Money-Icon.png">
   <link rel="stylesheet" href="../css/homeScreen.css">
   <link rel="stylesheet" href="../css/login.css">
   <link rel="stylesheet" href="../css/register.css">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/sidebar.css">
+  <link rel="stylesheet" href="../css/forgotPassword.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
   <!-- Bootstrap CSS CDN -->
@@ -42,29 +44,21 @@
 
 <body>
   <div id="main">
-    <div class="login-container">
+    <div class="forgotPassword-container">
       <div class="aside">
         <div class="header">
-          <h1>Money Easy</h1>
+          <h1>Forgot Password?</h1>
         </div>
-        <form id="login-form">
-
+        <form id="forgotPassword-form">
           <div class="input-wrapper">
             <input type="email" name="email" placeholder="Input your email">
             <div class="error" id="email-error"></div>
           </div>
-          <div class="input-wrapper">
-            <input type="password" name="password" placeholder="Type your Password">
-            <div class="error" id="password-error"></div>
-          </div>
-
           <!-- xong het phan input -->
-          <div class="form-action">
-            <span class="cursor-pointer" id="redirect-to-register">Don't have an account? Register</span>
-          </div>
           <button class="btn btn-primary" type="submit">
-            Login
+            Send Verification Email
           </button>
+          <span class="cursor-pointer" id="cancel">Cancel</span>
         </form>
       </div>
     </div>
@@ -75,11 +69,11 @@
   <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-firestore.js"></script>
   <!-- <script src="../js/index.js"></script>
+    <script src="../js/view.js"></script>
+    <script src="../js/component.js"></script>
+    <script src="../js/controller.js"></script>
+    <script src="../js/model.js"></script> -->
   <script src="../js/firebasequeries.js"></script>
-  <script src="../js/view.js"></script>
-  <script src="../js/component.js"></script>
-  <script src="../js/controller.js"></script>
-  <script src="../js/model.js"></script> -->
   <script src="../js/sidebar.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
     integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"

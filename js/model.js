@@ -66,6 +66,17 @@ model.login = async (dataLogin) => {
     }
 }
 
+model.forgotPassword = async (dataForgotPassword) => {
+    const res = await firebase.auth().sendPasswordResetEmail(dataForgotPassword.email)
+    .then(() => {
+      alert("Verification email has been sent!")
+    })
+    .catch(err => {
+        console.log(`Error: ${err}`)
+    });
+    view.setActiveScreen("loginScreen")
+}
+
 model.savingsForm = async (dataSavings) => {
     const res = await firebase.firestore().collection("Users").doc(model.currentUser.email).collection("Savings").add({
         "Name": dataSavings.name,

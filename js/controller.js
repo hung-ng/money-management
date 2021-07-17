@@ -74,6 +74,20 @@ controller.login = (dataLogin) => {
 
 }
 
+controller.forgotPassword = (dataForgotPassword) => {
+    if (dataForgotPassword.email.trim() === "") {
+        document.getElementById('email-error').innerText = "Email is missing"
+    }
+    else {
+        document.getElementById('email-error').innerText = ""
+    }
+
+    if (dataForgotPassword.email !== "") {
+        model.forgotPassword(dataForgotPassword);
+    }
+
+}
+
 
 controller.savingsForm = (dataSavings) => {
     if (dataSavings.name.trim() === "") {

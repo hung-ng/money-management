@@ -2,43 +2,43 @@ const component = {};
 
 component.registerScreen = `
 <div class="register-container">
-      <div class="aside">
-        <div class="header">
-          <h1>Money Easy</h1>
-        </div>
-        <form id="register-form">
-          <div class="input-name-wrapper">
-            <div class="input-wrapper">
-              <input type="text" name="firstName" placeholder="First name">
-              <div class="error" id="first-name-error"></div>
-            </div>
-            <div class="input-wrapper">
-              <input type="text" name="lastName" placeholder="Last name">
-              <div class="error" id="last-name-error"></div>
-            </div>
-          </div>
-          <div class="input-wrapper">
-            <input type="email" name="email" placeholder="Email">
-            <div class="error" id="email-error"></div>
-          </div>
-          <div class="input-wrapper">
-            <input type="password" name="password" placeholder="Password">
-            <div class="error" id="password-error"></div>
-          </div>
-          <div class="input-wrapper">
-            <input type="password" name="confirmPassword" placeholder="Confirm your password">
-            <div class="error" id="confirm-password-error"></div>
-          </div>
-          <!-- xong het phan input -->
-          <div class="form-action">
-            <span class="cursor-pointer" id="redirect-to-login">Already have an account? Login</span>
-          </div>
-          <button class="btn btn-primary" type="submit">
-            Register
-          </button>
-        </form>
+<div class="aside">
+  <div class="header">
+    <h1>Money Easy</h1>
+  </div>
+  <form id="register-form">
+    <div class="input-name-wrapper">
+      <div class="input-wrapper">
+        <input type="text" name="firstName" placeholder="First name">
+        <div class="error" id="first-name-error"></div>
+      </div>
+      <div class="input-wrapper">
+        <input type="text" name="lastName" placeholder="Last name">
+        <div class="error" id="last-name-error"></div>
       </div>
     </div>
+    <div class="input-wrapper">
+      <input type="email" name="email" placeholder="Email">
+      <div class="error" id="email-error"></div>
+    </div>
+    <div class="input-wrapper">
+      <input type="password" name="password" placeholder="Password">
+      <div class="error" id="password-error"></div>
+    </div>
+    <div class="input-wrapper">
+      <input type="password" name="confirmPassword" placeholder="Confirm your password">
+      <div class="error" id="confirm-password-error"></div>
+    </div>
+    <!-- xong het phan input -->
+    <button class="btn btn-primary" type="submit">
+      Register
+    </button>
+    <div class="form-action">
+      <span class="cursor-pointer" id="redirect-to-login">Already have an account? Login</span>
+    </div>
+  </form>
+</div>
+</div>
 `
 
 
@@ -60,16 +60,39 @@ component.loginScreen = `
     </div>
 
     <!-- xong het phan input -->
-    <div class="form-action">
-      <span class="cursor-pointer" id="redirect-to-register">Don't have an account? Register</span>
-    </div>
     <button class="btn btn-primary" type="submit">
       Login
     </button>
+    <span class="cursor-pointer" id="forgotPassword">Forgot Password?</span>
+    <div class="form-action">
+      <span class="cursor-pointer" id="redirect-to-register">Don't have an account? Register</span>
+    </div>
   </form>
 </div>
 </div>
 `
+
+component.forgotPassword = `
+<div class="forgotPassword-container">
+<div class="aside">
+  <div class="header">
+    <h1>Forgot Password?</h1>
+  </div>
+  <form id="forgotPassword-form">
+    <div class="input-wrapper">
+      <input type="email" name="email" placeholder="Input your email">
+      <div class="error" id="email-error"></div>
+    </div>
+    <!-- xong het phan input -->
+    <button class="btn btn-primary" type="submit">
+      Send Verification Email
+    </button>
+    <span class="cursor-pointer" id="cancel">Cancel</span>
+  </form>
+</div>
+</div>
+`
+
 
 component.homeScreen = `
 <div class="wrapper">
@@ -524,7 +547,7 @@ component.activeExchanges = `
   <div id="display-content">
     <div id="adddiv">
       <div class="cursor-pointer" id="redirectToAEForm"><img src="../img/Plus-Icon.png" height="30px"
-            width="30px" /></div>
+          width="30px" /></div>
     </div>
     <h2>Active Exchanges</h2>
     <table class="table table-hover">
@@ -533,7 +556,21 @@ component.activeExchanges = `
           <th scope="col">Name</th>
           <th scope="col">Amount</th>
           <th scope="col">Date</th>
-          <th scope="col">Type</th>
+          <th scope="col">
+            <div class="btn-group">
+              <div data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="cursor-pointer">
+                  Type
+                  <img src="../img/dropdown-icon.png" height="20px" width="20px" />
+                </div>
+              </div>
+              <ul class="dropdown-menu">
+                <li><a id="fetchall" class="dropdown-item cursor-pointer">All</a></li>
+                <li><a id="fetchincome" class="dropdown-item cursor-pointer">Income</a></li>
+                <li><a id="fetchexpense" class="dropdown-item cursor-pointer">Expense</a></li>
+              </ul>
+            </div>
+          </th>
           <th scope="col">Action</th>
         </tr>
       </thead>
