@@ -10,17 +10,21 @@ const Balance = async () => {
 
 }
 
-const BalanceDisplay = async () => {
+const Display = async () => {
     const res = await firebase.firestore().collection("Users").doc(model.currentUser.email)
         .get()
         .catch(err => {
             console.log(`Error: ${err}`)
         });
     let data = res.data()
-    let row = `
+    let row1 = `
     <h3>${numberWithCommas(data.Balance)}</h3>`
-    let table = document.getElementById('display-content')
-    table.innerHTML += row
+    let table1 = document.getElementById('balanceDisplay')
+    table1.innerHTML += row1
+    let row2 = `
+    <h3>${numberWithCommas(data.SavingsTotal)}</h3>`
+    let table2 = document.getElementById('savingsDisplay')
+    table2.innerHTML += row2
 }
 
 //--------------------------------------------------------------

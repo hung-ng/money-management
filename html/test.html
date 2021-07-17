@@ -44,22 +44,53 @@
 
 <body>
   <div id="main">
-    <div class="forgotPassword-container">
-      <div class="aside">
-        <div class="header">
-          <h1>Forgot Password?</h1>
+    <div class="wrapper">
+      <nav id="sidebar">
+        <div class="sidebar-header">
+          <h3>Money Easy</h3>
         </div>
-        <form id="forgotPassword-form">
-          <div class="input-wrapper">
-            <input type="email" name="email" placeholder="Input your email">
-            <div class="error" id="email-error"></div>
+
+        <ul class="list-unstyled components">
+          <p id="username"></p>
+          <li>
+            <a id="home">Home</a>
+          </li>
+          <li>
+            <a id="savings">Savings</a>
+          </li>
+          <li>
+            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pasive
+              Income</a>
+            <ul class="collapse list-unstyled" id="pageSubmenu">
+              <li>
+                <a id="passiveincome1">By Percent</a>
+              </li>
+              <li>
+                <a id="passiveincome2">Uniform</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a id="activeexchanges">Active Exchanges</a>
+          </li>
+          <li>
+            <a id="sign-out">Log Out</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div id="content">
+        <div id="display-content">
+          <div class="flex-row totalDisplay">
+            <div id="balanceDisplay">
+              <h1>Balance</h1>
+            </div>
+            <div id="savingsDisplay">
+              <h1>Total money in all Savings</h1>
+            </div>
           </div>
-          <!-- xong het phan input -->
-          <button class="btn btn-primary" type="submit">
-            Send Verification Email
-          </button>
-          <span class="cursor-pointer" id="cancel">Cancel</span>
-        </form>
+
+        </div>
       </div>
     </div>
   </div>

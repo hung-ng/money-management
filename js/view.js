@@ -65,7 +65,7 @@ view.setActiveScreen = (screenName) => {
             document.getElementById('main').innerHTML = component.homeScreen;
             document.getElementById('username').innerText = model.currentUser.displayName;
             Balance();
-            BalanceDisplay();
+            Display();
             document.getElementById("sign-out").addEventListener('click', () => {
                 firebase.auth().signOut();
                 view.setActiveScreen("loginScreen");

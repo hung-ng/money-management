@@ -132,7 +132,15 @@ component.homeScreen = `
 
 <div id="content">
   <div id="display-content">
-    <h1>Balance</h1>
+    <div class="flex-row totalDisplay">
+      <div id="balanceDisplay">
+        <h1>Balance</h1>
+      </div>
+      <div id="savingsDisplay">
+        <h1>Total money in all Savings</h1>
+      </div>
+    </div>
+
   </div>
 </div>
 </div>

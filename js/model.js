@@ -72,7 +72,10 @@ model.forgotPassword = async (dataForgotPassword) => {
       alert("Verification email has been sent!")
     })
     .catch(err => {
-        console.log(`Error: ${err}`)
+        console.log(`Error: ${err.code}`)
+        if (err.code == "auth/user-not-found"){
+            alert("Account does not exist!")
+        }
     });
     view.setActiveScreen("loginScreen")
 }
