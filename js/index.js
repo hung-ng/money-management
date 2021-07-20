@@ -12,7 +12,6 @@ const init = () => {
 
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
-  console.log(firebase.app().name);
 
   firebase.auth().onAuthStateChanged(function (user) {
     if (user && user.emailVerified === true) {
