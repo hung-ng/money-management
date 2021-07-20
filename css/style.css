@@ -69,13 +69,9 @@
 
 #content {
     width: 100%;
-    padding: 20px;
+    padding: 20px 50px;
     min-height: 100vh;
     transition: all 0.3s;
-}
-
-#display-content{
-    margin: 20px 50px
 }
 
 #adddiv{
@@ -87,6 +83,12 @@
 .flex-row{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+}
+
+.flex-col{
+    display: flex;
+    flex-direction: column;
 }
 
 

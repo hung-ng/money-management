@@ -130,17 +130,32 @@ component.homeScreen = `
   </ul>
 </nav>
 
-<div id="content">
-  <div id="display-content">
-    <div class="flex-row totalDisplay">
-      <div id="balanceDisplay">
-        <h1>Balance</h1>
-      </div>
-      <div id="savingsDisplay">
-        <h1>Total money in all Savings</h1>
-      </div>
+<div id="content" class="flex-row">
+  <div class="totalDisplay">
+    <div id="balanceDisplay">
+      <h3>Balance</h3>
     </div>
-
+    <div id="savingsDisplay">
+      <h3>Savings' Total</h3>
+    </div>
+  </div>
+  <div id="chartSection">
+    <div style="margin-right: 100px; text-align: center;">Active Exchanges Contribution in last 7 days</div>
+    <div class="btn-group">
+      <div data-bs-toggle="dropdown" aria-expanded="false">
+        <div style="margin-bottom: 2px;" class="cursor-pointer">
+          Time range
+          <img src="../img/dropdown-icon.png" height="20px" width="20px" />
+        </div>
+      </div>
+      <ul class="dropdown-menu">
+        <li><a id="7days" class="dropdown-item cursor-pointer">7 days</a></li>
+        <li><a id="amonth" class="dropdown-item cursor-pointer">month</a></li>
+        <li><a id="6months" class="dropdown-item cursor-pointer">6 months</a></li>
+        <li><a id="ayear" class="dropdown-item cursor-pointer">year</a></li>
+      </ul>
+    </div>
+    <div id="piechart" style="width: 700px; height: 500px;"></div>
   </div>
 </div>
 </div>

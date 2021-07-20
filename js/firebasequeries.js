@@ -18,11 +18,11 @@ const Display = async () => {
         });
     let data = res.data()
     let row1 = `
-    <h3>${numberWithCommas(data.Balance)}</h3>`
+    <p class="numberDisplay">${numberWithCommas(data.Balance)}</p>`
     let table1 = document.getElementById('balanceDisplay')
     table1.innerHTML += row1
     let row2 = `
-    <h3>${numberWithCommas(data.SavingsTotal)}</h3>`
+    <p class="numberDisplay">${numberWithCommas(data.SavingsTotal)}</p>`
     let table2 = document.getElementById('savingsDisplay')
     table2.innerHTML += row2
 }
@@ -416,6 +416,62 @@ function monthDiff(d1) { // tính số tháng chênh lệch để tính tiền c
     } else {
         return monthdiff
     }
+}
+
+function DatesDiff(range, d1) {
+    d1 = new Date(d1);
+    var d2 = new Date();
+    if (range == "7days") {
+        if (((d2.getTime() - d1.getTime()) / (1000 * 3600 * 24)) > 7) {
+            return false
+        } else {
+            return true
+        }
+    }
+    if (range == "aMonth") {
+        if (d2.getFullYear() - d1.getFullYear() == 1) {
+            if (d2.getMonth() == 1 && d1.getMonth() == 12) {
+                return true
+            } else {
+                return false
+            }
+        } else if (d2.getFullYear() - d1.getFullYear() == 0) {
+            if (d2.getMonth() - d1.getMonth() == 1) {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+    }
+
+    if (range == "6Months") {
+        if (d2.getFullYear() - d1.getFullYear() == 1) {
+            if (d2.getMonth() < 7 && d2.getMonth() + 12 - d1.getMonth() < 7) {
+                return true
+            } else {
+                return false
+            }
+        } else if (d2.getFullYear() - d1.getFullYear() == 1) {
+            if (d2.getMonth() - 6 > d1.getMonth()) {
+                return false
+            } else {
+                return true
+            }
+        } else {
+            return false
+        }
+    }
+
+    if (range == "aYear") {
+        if (d2.getFullYear() - d1.getFullYear() == 1) {
+            return true
+        } else {
+            return false
+        }
+    }
+
 }
 
 function Passive1(amount, rate, startdate) { //tính số tiền tổng của từng mức thu nhập bị động tăng theo %

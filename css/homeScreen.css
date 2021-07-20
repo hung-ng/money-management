@@ -76,8 +76,21 @@ background-color: black;
 } */
 
 .totalDisplay{
-  justify-content: space-between;
+  padding-top: 65px;
 }
+
+#piechart{
+  text-align: center;
+  color: rgb(206, 8, 8);
+  font-weight: bold;
+  line-height: 100px;
+  font-size: 20px
+}
+
+.numberDisplay{
+  font-size: 20px;
+}
+
 
 
  

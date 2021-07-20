@@ -40,6 +40,33 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
     integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
     crossorigin="anonymous"></script>
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load("current", { packages: ["corechart"] });
+    google.charts.setOnLoadCallback(drawChart);
+    let x = 1
+    let b = 0
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Task', 'Hours per Day'],
+        ['Work', x],
+        ['Eat', b],
+      ]);
+
+      var options = {
+        title: 'My Daily Activities',
+        pieHole: 0.4,
+      };
+
+      if (x == 0 && b == 0) {
+        document.getElementById("piechart").innerHTML = "No record available"
+      } else {
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
+    }
+  </script>
 </head>
 
 <body>
@@ -79,21 +106,38 @@
         </ul>
       </nav>
 
-      <div id="content">
-        <div id="display-content">
-          <div class="flex-row totalDisplay">
-            <div id="balanceDisplay">
-              <h1>Balance</h1>
-            </div>
-            <div id="savingsDisplay">
-              <h1>Total money in all Savings</h1>
-            </div>
+      <div id="content" class="flex-row">
+        <div class="totalDisplay">
+          <div id="balanceDisplay">
+            <h3>Balance</h3>
           </div>
-
+          <div id="savingsDisplay">
+            <h3>Savings' Total</h3>
+          </div>
+        </div>
+        <div id="chartSection">
+          <div style="margin-right: 100px; text-align: center;">Active Exchanges Contribution in last 7 days</div>
+          <div class="btn-group">
+            <div data-bs-toggle="dropdown" aria-expanded="false">
+              <div style="margin-bottom: 2px;" class="cursor-pointer">
+                Time range
+                <img src="../img/dropdown-icon.png" height="20px" width="20px" />
+              </div>
+            </div>
+            <ul class="dropdown-menu">
+              <li><a id="7days" class="dropdown-item cursor-pointer">7 days</a></li>
+              <li><a id="amonth" class="dropdown-item cursor-pointer">month</a></li>
+              <li><a id="6months" class="dropdown-item cursor-pointer">6 months</a></li>
+              <li><a id="ayear" class="dropdown-item cursor-pointer">year</a></li>
+            </ul>
+          </div>
+          <div id="piechart" style="width: 700px; height: 500px;"></div>
         </div>
       </div>
     </div>
   </div>
+
+
 
   <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-analytics.js"></script>

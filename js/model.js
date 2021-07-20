@@ -33,6 +33,22 @@ model.register = async (data) => {
             "Total1": 0,
             "Total2": 0
         })
+        const res3 = await firebase.firestore().collection("Users").doc(data.email).collection("PieChart").doc("7days").set({
+            "Income": 0,
+            "Expense": 0
+        })
+        const res4 = await firebase.firestore().collection("Users").doc(data.email).collection("PieChart").doc("aMonth").set({
+            "Income": 0,
+            "Expense": 0
+        })
+        const res5 = await firebase.firestore().collection("Users").doc(data.email).collection("PieChart").doc("6Months").set({
+            "Income": 0,
+            "Expense": 0
+        })
+        const res6 = await firebase.firestore().collection("Users").doc(data.email).collection("PieChart").doc("aYear").set({
+            "Income": 0,
+            "Expense": 0
+        })
         view.setActiveScreen('loginScreen');
 
     }
