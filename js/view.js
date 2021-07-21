@@ -68,25 +68,23 @@ view.setActiveScreen = (screenName) => {
             Display();
             sumIn("7days");
             sumEx("7days");
+            sumIn("aMonth");
+            sumEx("aMonth");
+            sumIn("6Months");
+            sumEx("6Months");
+            sumIn("aYear");
+            sumEx("aYear");
             drawChart("7days");
             document.getElementById("7days").addEventListener('click',() => {
-                sumIn("7days");
-                sumEx("7days");
                 drawChart("7days");
             });
             document.getElementById("amonth").addEventListener('click', () => {
-                sumIn("aMonth");
-                sumEx("aMonth");
                 drawChart("aMonth");
             });
             document.getElementById("6months").addEventListener('click', () => {
-                sumIn("6Months");
-                sumEx("6Months");
                 drawChart("6Months");
             });
             document.getElementById("ayear").addEventListener('click', () => {
-                sumIn("aYear");
-                sumEx("aYear");
                 drawChart("aYear");
             });
             document.getElementById("sign-out").addEventListener('click', () => {

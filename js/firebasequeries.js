@@ -453,7 +453,7 @@ function DatesDiff(range, d1) {
             } else {
                 return false
             }
-        } else if (d2.getFullYear() - d1.getFullYear() == 1) {
+        } else if (d2.getFullYear() - d1.getFullYear() == 0) {
             if (d2.getMonth() - 6 > d1.getMonth()) {
                 return false
             } else {
