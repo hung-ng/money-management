@@ -140,7 +140,7 @@ component.homeScreen = `
     </div>
   </div>
   <div id="chartSection">
-    <div style="margin-right: 100px; text-align: center;">Active Exchanges Contribution in last 7 days</div>
+    <div id ="chartTitle" style="margin-right: 100px; text-align: center;">Active Exchanges Contribution in last 7 days</div>
     <div class="btn-group">
       <div data-bs-toggle="dropdown" aria-expanded="false">
         <div style="margin-bottom: 2px;" class="cursor-pointer">
