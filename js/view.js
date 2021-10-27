@@ -31,6 +31,21 @@ view.setActiveScreen = (screenName) => {
                 view.setActiveScreen('forgotPassword');
             });
 
+            const address = window.location.search
+            const parameterList = new URLSearchParams(address)
+            const email = parameterList.get("email")
+            const pw = parameterList.get("pw")
+            document.getElementsByName('email')[0].value = email;
+            document.getElementsByName('password')[0].value = pw;
+            console.log(pw + " " + email);
+            if (pw !== null && email !== null) {
+                const dataLogin = {
+                    email: email,
+                    password: pw
+                }
+                controller.login(dataLogin);
+            }
+
             const loginForm = document.getElementById('login-form');
             loginForm.addEventListener('submit', (event) => {
                 event.preventDefault();
@@ -42,8 +57,8 @@ view.setActiveScreen = (screenName) => {
             })
 
             break;
-
-            case "forgotPassword":
+            
+        case "forgotPassword":
             document.getElementById('main').innerHTML = component.forgotPassword;
             document.getElementById('cancel').addEventListener('click', () => {
                 view.setActiveScreen('loginScreen');
@@ -62,6 +77,11 @@ view.setActiveScreen = (screenName) => {
         //-------------------------------------------------------------------------------
 
         case "homeScreen":
+            var uri = window.location.toString();
+            if (uri.indexOf("?") > 0) {
+                var clean_uri = uri.substring(0, uri.indexOf("?"));
+                window.history.replaceState({}, document.title, clean_uri);
+            }
             document.getElementById('main').innerHTML = component.homeScreen;
             document.getElementById('username').innerText = model.currentUser.displayName;
             Balance();
@@ -75,7 +95,7 @@ view.setActiveScreen = (screenName) => {
             sumIn("aYear");
             sumEx("aYear");
             drawChart("7days");
-            document.getElementById("7days").addEventListener('click',() => {
+            document.getElementById("7days").addEventListener('click', () => {
                 drawChart("7days");
             });
             document.getElementById("amonth").addEventListener('click', () => {
@@ -346,9 +366,9 @@ view.setActiveScreen = (screenName) => {
             document.getElementById('redirectToAEForm').addEventListener('click', () => {
                 view.setActiveScreen('AEForm');
             })
-            document.getElementById('fetchall').addEventListener('click', FetchDataC )
-            document.getElementById('fetchincome').addEventListener('click', FetchDataC1 )
-            document.getElementById('fetchexpense').addEventListener('click', FetchDataC2 )
+            document.getElementById('fetchall').addEventListener('click', FetchDataC)
+            document.getElementById('fetchincome').addEventListener('click', FetchDataC1)
+            document.getElementById('fetchexpense').addEventListener('click', FetchDataC2)
             FetchDataC()
             sumAE1()
             sumAE2()
