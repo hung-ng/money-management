@@ -4,6 +4,10 @@
 
 This project is a Money Management Website designed to help users track their finances effectively. It provides features such as authentication, expense and income tracking, savings accounts, passive income calculation, and graphical insights.
 
+## Link to sample account
+
+[Money Easy](https://hung-ng.github.io/money-management/html/index.html?email=hungngsample@gmail.com\&pw=samplepassword)
+
 ## Features
 
 - **Authentication:** Secure user login system.
