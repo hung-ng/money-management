@@ -6,7 +6,7 @@ This project is a Money Management Website designed to help users track their fi
 
 ## Link to sample account
 
-[Money Easy](https://hung-ng.github.io/money-management/html/index.html?email=hungngsample@gmail.com\&pw=samplepassword)
+[Money Easy](https://hung-ng.github.io/money-management/html/index.html?email=hungngsample@gmail.com&pw=samplepassword)
 
 ## Features
 
