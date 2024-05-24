@@ -19,4 +19,4 @@ This project is a Money Management Website designed to help users track their fi
 
 ## Technologies Used
 
-- JavaScript, Firebase, Google Charts
+JavaScript, Firebase, Google Charts
